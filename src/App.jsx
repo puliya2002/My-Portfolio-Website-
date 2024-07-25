@@ -5,6 +5,9 @@ import AboutMe from './components/AboutMe.jsx';
 import Projects from './components/Projects.jsx';
 import { motion } from 'framer-motion';
 import Footer from './components/Footer.jsx';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
+
+
 
 const App = () => {
   const [currentSection, setCurrentSection] = useState('');
@@ -15,20 +18,28 @@ const App = () => {
   };
 
   return (
+
+    <BrowserRouter>
+
     <div>
       <NavBar onNavClick={handleNavClick} />
-      <section id="hero">
-        <Hero />
-      </section>
-      <section id="about">
-        <AboutMe />
-      </section>
-      <section id="projects">
-        <Projects />
-      </section>
-      <section id="footer">
-        <Footer onNavClick={handleNavClick}/>
-      </section>
+      <Routes>
+        <Route path="/" element={
+          <>
+            <section id="hero">
+              <Hero />
+            </section>
+            <section id="about">
+              <AboutMe />
+            </section>
+            <section id="projects">
+              <Projects />
+            </section>
+          </>
+        } />
+       
+      </Routes>
+      <Footer onNavClick={handleNavClick} />
       <motion.div
         className="absolute z-0 w-[65%] sm:w-[35%] h-[100%] sm:h-[50%] top-0 left-0 bg-gradient-to-bl from-blue-500/90 to-blue-900/40 rounded-full blur-[150px]"
         animate={{ x: ["-20%", "200%", "-20%"] }}
@@ -40,6 +51,9 @@ const App = () => {
         transition={{ duration: 20, ease: "linear", repeat: Infinity }}
       />
     </div>
+
+    </BrowserRouter>
+
   );
 };
 

@@ -87,11 +87,11 @@ const Hero = () => {
           </motion.div>
           <motion.div
             className="h-40 sm:h-auto hero-card click cursor-pointer"
-            whileHover={{ scale: "-1.5deg", scale: 0.9 }}
+            whileHover={{ scale: "0.9" }}
             variants={springAnimation}
           >
             <div className="flex-row flex justify-between items-center">
-              <p className="text-2xl">Call Now</p>
+              <p className="text-xl">Contact Now</p>
               <div className="ml-2 cursor-pointer size-auto p-1 border-[2px] border-gray-500 rounded-full hover:bg-gradient-to-tr from-gray-700/20 to-gray-500/50">
                 <FiArrowRight className="h-5 w-5" />
               </div>

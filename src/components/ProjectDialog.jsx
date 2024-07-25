@@ -19,7 +19,7 @@ function ProjectDialog({ open, handler, children }) {
       onClick={handleBackgroundClick}
     >
       <div
-        className="bg-black/90 rounded-lg shadow-lg w-full max-w-lg mx-10 flex flex-col max-h-[90vh] overflow-hidden"
+        className="bg-black/90 rounded-lg shadow-lg w-full max-w-lg mx-10 flex flex-col max-h-[90vh] overflow-hidden project-card" 
         onClick={handleDialogClick}
       >
         <div className="p-4 border-b">

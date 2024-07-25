@@ -1,15 +1,15 @@
 import React from 'react';
 import { FaArrowRightLong } from "react-icons/fa6";
-import ProjectDialog from './ProjectDialog';
+
 
 function ProjectCard(props) {
-  const [open, setOpen] = React.useState(false);
+
  
-  const handleOpen = () => setOpen(!open);
+  const handleNavigation = () => navigate(`/project/${props.id}`);
 
   return (
     <div className="h-40 h-auto project-card">
-      <div className='cursor-pointer' onClick={handleOpen}>
+      <div className='cursor-pointer' onClick={handleNavigation}>
         <div className="flex-row flex justify-between items-center">
           <p className="text-2xl pb-2">{props.name}</p>
           <div className="cursor-pointer size-auto mb-2 p-2 border-[2px] border-gray-600/60 rounded-full hover:bg-gradient-to-tr from-gray-700/20 to-gray-500/50">
@@ -30,7 +30,7 @@ function ProjectCard(props) {
           alt="project"
         />
       </div  >
-      <ProjectDialog open={open} handler={handleOpen} />
+      
     </div>
   );
 }
