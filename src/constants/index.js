@@ -1,5 +1,6 @@
 import dpImage from "../assets/me.png";
 import MoneyTrack from "../assets/801.png";
+import GreenSS from "../assets/greenss.png";
 
 export const ProjectList = [
   {
@@ -7,12 +8,18 @@ export const ProjectList = [
     title: "Money Tack",
     image: MoneyTrack,
     skills: ["Flutter", "Firebase", "UI/UX", "Git"],
+    
   },
   {
     id: 2,
     title: "Green Supermarket",
     image: dpImage,
     skills: ["HTML", "CSS", "JavaScript", "JAVA", "Git", "SQL"],
+    ss: GreenSS,
+    giturl: "https://github.com/puliya2002/GreenSuperMarket.git",
+    weburl: "",
+    description: "University second-year group project involved developing an e-commerce web application tailored for a supermarket We used HTML, CSS, and JavaScript as front-end technologies and JAVA for the backend. Integrated PayPal sandbox as the payment gateway."
+    
   },
   {
     id: 3,

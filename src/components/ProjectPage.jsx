@@ -18,21 +18,56 @@ const ProjectPage = () => {
         className="bg-gradient-to-br from-gray-500/30 to-gray-500/20
 border-white/5 border-2 rounded-xl shadow p-5"
       >
-        <div className="flex justify-between content-center items-center">
-          <p className="text-2xl font-medium">{project.title}</p>
-          <div className="flex gap-2 items-center">
-            <p>Go to Git Hub Link </p>
-            <FaExternalLinkAlt />
-          </div>
+        <div className="flex justify-items-end content-center justify-end gap-2">
+          <a href={project.giturl} target="_blank">
+            <div
+              className={`${
+                project.giturl ? "flex" : "hidden"
+              } gap-2 items-center border-[1.7px] rounded-full px-3 py-1 border-gray-500 cursor-pointer hover:bg-gray-500/50 bg-gray-500/10`}
+            >
+              <p>Git Hub Link </p>
+              <FaExternalLinkAlt />
+            </div>
+          </a>
+          <a href={project.weburl} target="_blank">
+            <div
+              className={`${
+                project.weburl ? "flex" : "hidden"
+              } gap-2 items-center border-[1.7px] rounded-full px-3 py-1 border-gray-500 cursor-pointer hover:bg-gray-500/50 bg-gray-500/10`}
+            >
+              <p>Website Link </p>
+              <FaExternalLinkAlt />
+            </div>
+          </a>
         </div>
-        <img src={project.image} alt={project.title} className="pt-5" />
-        <div>
-          <h2>Skills</h2>
-          <ul>
-            {project.skills.map((skill, index) => (
-              <li key={index}>{skill}</li>
-            ))}
-          </ul>
+        <div className=" content-center pb-6">
+          <p className="text-2xl font-medium pb-2 ">{project.title}</p>
+          <p className="opacity-50">{project.description}</p>
+        </div>
+
+        <img src={project.ss} alt={project.title} className=" rounded-lg " />
+
+        <div className="flex pt-5 content-center justify-center gap-2">
+          <a href={project.giturl} target="_blank">
+            <div
+              className={`${
+                project.giturl ? "flex" : "hidden"
+              } gap-2 items-center border-[1.7px] rounded-full px-3 py-1 border-gray-500 cursor-pointer hover:bg-gray-500/50 bg-gray-500/10`}
+            >
+              <p>Git Hub Link </p>
+              <FaExternalLinkAlt />
+            </div>
+          </a>
+          <a href={project.weburl} target="_blank">
+            <div
+              className={`${
+                project.weburl ? "flex" : "hidden"
+              } gap-2 items-center border-[1.7px] rounded-full px-3 py-1 border-gray-500 cursor-pointer hover:bg-gray-500/50 bg-gray-500/10`}
+            >
+              <p>Website Link </p>
+              <FaExternalLinkAlt />
+            </div>
+          </a>
         </div>
       </div>
     </div>
