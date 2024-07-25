@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FirstSection from './components/Hero.jsx';
+import Hero from './components/Hero.jsx';
 import NavBar from './components/NavBar.jsx';
 import AboutMe from './components/AboutMe.jsx';
 import Projects from './components/Projects.jsx';
@@ -18,7 +18,7 @@ const App = () => {
     <div>
       <NavBar onNavClick={handleNavClick} />
       <section id="hero">
-        <FirstSection />
+        <Hero />
       </section>
       <section id="about">
         <AboutMe />
