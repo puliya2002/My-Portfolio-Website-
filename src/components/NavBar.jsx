@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { BiMenuAltRight } from "react-icons/bi";
-import { Typography, IconButton } from "@material-tailwind/react";
 import { motion } from "framer-motion";
 import Drawers from "./Drawers";
 
 function NavBar(props) {
   const [open, setOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [scrollingUp, setScrollingUp] = useState(false);
+  const [scrollingUp, setScrollingUp] = useState(true);
 
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
@@ -38,7 +37,7 @@ function NavBar(props) {
       ></div>
       <Drawers open={open} onClose={closeDrawer} onNavClick={props.onNavClick} />
       <nav
-        className={` bg-gray-800/30 z-30 fixed w-full transition-transform duration-300 backdrop-blur-sm border-gray-700/20 border-b-2 ${
+        className={`bg-gray-800/30 z-30 fixed w-full transition-transform duration-300 backdrop-blur-sm border-gray-700/20 border-b-2 ${
           scrollingUp ? "translate-y-0" : "-translate-y-full"
         }`}
       >
