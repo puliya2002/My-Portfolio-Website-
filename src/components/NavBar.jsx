@@ -3,6 +3,8 @@ import { BiMenuAltRight } from "react-icons/bi";
 import { motion } from "framer-motion";
 import Drawers from "./Drawers";
 
+
+
 function NavBar(props) {
   const [open, setOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -28,6 +30,9 @@ function NavBar(props) {
     };
   }, [lastScrollY]);
 
+
+
+
   return (
     <React.Fragment>
       <div
@@ -42,7 +47,7 @@ function NavBar(props) {
         }`}
       >
         <div className="container max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="" className="flex items-center">
+          <a href="/" className="flex items-center">
             <p className="text-2xl font-medium">Pulindu Vidmal</p>
           </a>
           <motion.div

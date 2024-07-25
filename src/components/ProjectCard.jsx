@@ -1,15 +1,19 @@
 import React from 'react';
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useNavigate } from 'react-router-dom';
+
 
 
 function ProjectCard(props) {
+
+  const navigate = useNavigate();
 
  
   const handleNavigation = () => navigate(`/project/${props.id}`);
 
   return (
-    <div className="h-40 h-auto project-card">
-      <div className='cursor-pointer' onClick={handleNavigation}>
+    <div className="h-40 h-auto project-card cursor-pointer" onClick={handleNavigation}>
+      <div className='' >
         <div className="flex-row flex justify-between items-center">
           <p className="text-2xl pb-2">{props.name}</p>
           <div className="cursor-pointer size-auto mb-2 p-2 border-[2px] border-gray-600/60 rounded-full hover:bg-gradient-to-tr from-gray-700/20 to-gray-500/50">

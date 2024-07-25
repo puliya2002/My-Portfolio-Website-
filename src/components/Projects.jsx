@@ -34,6 +34,7 @@ function Projects() {
             transition={{ duration: 1, delay: item.id * 0.1 }}
           >
             <ProjectCard
+              id={item.id}
               name={item.title}
               image={item.image}
               skills={item.skills}
