@@ -15,6 +15,16 @@
   -webkit-text-size-adjust: 100%;
 }
 
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 h1 {
   @apply text-6xl font-poppins font-semibold !important;
 }

@@ -85,9 +85,9 @@ function NavBar(props) {
         </div>
       </Drawer>
       <nav
-  className={` bg-gray-800/30  z-30 fixed w-full transition-transform duration-300 backdrop-blur-sm border-gray-700/20 border-b-2 ${
+  className={` bg-gray-800/30  z-30 fixed w-full transition-transform duration-300 backdrop-blur-sm border-gray-700/20 border-b-2  ${
     scrollingUp ? "translate-y-0" : "-translate-y-full" 
-  }`}
+  }`} 
 >
         <div className="container max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="" className="flex items-center">
