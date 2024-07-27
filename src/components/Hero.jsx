@@ -33,6 +33,15 @@ const springAnimation = {
 };
 
 const Hero = () => {
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = `public/pulindu_vidmal_software_engineer_resume.pdf`;
+    link.download = "pulindu_vidmal_software_engineer_resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section className="min-h-screen flex items-center">
       <div className="d-container z-10">
@@ -58,20 +67,31 @@ const Hero = () => {
           animate="animate"
           transition={{ staggerChildren: 0.05 }}
         >
-          <motion.div className="hero-card row-span-2" variants={springAnimation}>
+          <motion.div
+            className="hero-card row-span-2"
+            variants={springAnimation}
+          >
             <img
               className="object-cover sm:max-h-100 w-screen p-6 rounded-[35px]"
               src={dpImage}
               alt="hero"
             />
           </motion.div>
-          <motion.div className="h-40 sm:h-auto hero-card" variants={springAnimation}>
+          <motion.div
+            className="h-40 sm:h-auto hero-card"
+            variants={springAnimation}
+          >
             <div>
               <p className="text-6xl">500+</p>
-              <p className="text-xl pt-2 opacity-65">Freelancing Projects Done</p>
+              <p className="text-xl pt-2 opacity-65">
+                Freelancing Projects Done
+              </p>
             </div>
           </motion.div>
-          <motion.div className="h-40 sm:h-auto hero-card" variants={springAnimation}>
+          <motion.div
+            className="h-40 sm:h-auto hero-card"
+            variants={springAnimation}
+          >
             <div>
               <p className="text-6xl">
                 4<span className="text-3xl"> years +</span>
@@ -79,7 +99,10 @@ const Hero = () => {
               <p className="text-xl pt-2 opacity-65">Experience</p>
             </div>
           </motion.div>
-          <motion.div className="h-40 sm:h-auto hero-card" variants={springAnimation}>
+          <motion.div
+            className="h-40 sm:h-auto hero-card"
+            variants={springAnimation}
+          >
             <div>
               <p className="text-5xl">★★★★★</p>
               <p className="text-xl pt-2 opacity-65">On Fiverr</p>
@@ -99,27 +122,68 @@ const Hero = () => {
           </motion.div>
           <motion.div variants={springAnimation}>
             <div className="grid grid-cols-5 gap-3">
-              <div className="hero-card aspect-square cursor-pointer">
-                <FaLinkedinIn className="h-6 w-6 " />
-              </div>
-              <div className="hero-card cursor-pointer">
+              <a
+                href="https://www.linkedin.com/in/pulindu-vidmal-57a7851a4/ "
+                target="_blank"
+              >
+                <motion.div
+                  className="hero-card aspect-square cursor-pointer"
+                  whileHover={{ scale: "0.9" }}
+                >
+                  <FaLinkedinIn className="h-6 w-6 " />
+                </motion.div>
+              </a>
+              <a
+                href="https://web.facebook.com/pulindu.vidmal.10 "
+                target="_blank"
+              >
+              <motion.div
+                className="hero-card cursor-pointer aspect-square"
+                whileHover={{ scale: "0.9" }}
+              >
                 <FaFacebookF className="h-6 w-6 " />
-              </div>
-              <div className="hero-card cursor-pointer">
+              </motion.div>
+              </a>
+              <a
+                href="https://www.instagram.com/p_u_l_i_y_a_official/"
+                target="_blank"
+              >
+              <motion.div
+                className="hero-card cursor-pointer aspect-square"
+                whileHover={{ scale: "0.9" }}
+              >
                 <SlSocialInstagram className="h-6 w-6" />
-              </div>
-              <div className="hero-card cursor-pointer">
+              </motion.div>
+              </a>
+              <a
+                href="https://wa.me/qr/GGBM57BKKRIKL1 "
+                target="_blank"
+              >
+              <motion.div
+                className="hero-card cursor-pointer aspect-square"
+                whileHover={{ scale: "0.9" }}
+              >
                 <FaWhatsapp className="h-6 w-6" />
-              </div>
-              <div className="hero-card cursor-pointer">
+              </motion.div>
+              </a>
+              <a
+                href="https://github.com/puliya2002 "
+                target="_blank"
+              >
+              <motion.div
+                className="hero-card cursor-pointer aspect-square"
+                whileHover={{ scale: "0.9" }}
+              >
                 <FaGithub className="h-6 w-6" />
-              </div>
+              </motion.div>
+              </a>
             </div>
           </motion.div>
           <motion.div
-            className="gap-3 hero-card sm:col-span-2 h-[85px] sm:h-auto cursor-pointer"
+            className="gap-3 hero-card sm:col-span-2 h-[85px] sm:h-auto cursor-pointer "
             variants={springAnimation}
-            onClick={() => {}}
+            onClick={handleDownload}
+            whileHover={{ scale: "0.95" }}
           >
             <div className="flex-row flex justify-between items-center">
               <p className="text-xl">Download CV</p>

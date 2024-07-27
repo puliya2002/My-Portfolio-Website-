@@ -33,6 +33,10 @@ h2 {
   @apply text-4xl font-poppins font-medium !important;
 }
 
+body {
+  @apply overflow-x-hidden;
+}
+
 .d-container{
   @apply container max-w-6xl mx-auto p-6 text-center pt-14 sm:pt-14 ;
 }
