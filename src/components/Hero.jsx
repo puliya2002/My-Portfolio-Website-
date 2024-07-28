@@ -180,7 +180,7 @@ const Hero = () => {
             </div>
           </motion.div>
           <motion.div
-            className="gap-3 hero-card sm:col-span-2 h-[85px] sm:h-auto cursor-pointer "
+          className="gap-3 hero-card sm:col-span-2 h-[85px] sm:h-auto cursor-pointer"
             variants={springAnimation}
             onClick={handleDownload}
             whileHover={{ scale: "0.95" }}

@@ -34,7 +34,7 @@ const App = () => {
                 <section id="projects" className="overflow-hidden">
                   <Projects />
                 </section>
-                <div className="overflow-hidden ">
+                {/* <div className="overflow-hidden ">
                   <motion.div
                     className="absolute z-0 w-[65%] sm:w-[35%] h-[100%] sm:h-[50%] top-0 left-0 bg-gradient-to-bl from-blue-500/90 to-blue-900/40 rounded-full blur-[150px]"
                     animate={{ x: ["-20%", "200%", "-20%"] }}
@@ -44,8 +44,8 @@ const App = () => {
                       repeat: Infinity,
                     }}
                   />
-                </div>
-                <div className=" overflow-hidden">
+                </div> */}
+                {/* <div className=" overflow-hidden">
                   <motion.div
                     className="absolute z-0 w-[65%] sm:w-[35%] h-[100%] sm:h-[50%] bottom-[-220%] sm:bottom-[-50%] left-0 bg-gradient-to-bl from-blue-500/50 to-blue-900/40 rounded-full blur-[200px] "
                     animate={{ x: ["200%", "-20%", "200%"] }}
@@ -55,7 +55,7 @@ const App = () => {
                       repeat: Infinity,
                     }}
                   />
-                </div>
+                </div> */}
               </>
             }
           />
