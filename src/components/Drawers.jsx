@@ -38,7 +38,11 @@ function Drawers({ open, onClose, onNavClick }) {
               whileHover={{ scale: 1.1, x: 20 }}
               whileTap={{ scale: 0.9 }}
               className="cursor-pointer text-2xl py-5 font-normal odd:border-b-[1px] odd:border-gray-700 even:border-none"
-              onClick={() => onNavClick(link.url)}
+              onClick={() => {
+                onNavClick(link.url);
+                onClose();
+              }}
+              
             >
               {link.title}
             </motion.li>

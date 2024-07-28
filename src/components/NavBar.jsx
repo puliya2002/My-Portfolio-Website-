@@ -15,7 +15,7 @@ function NavBar(props) {
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
-    if (currentScrollY <= lastScrollY) {
+    if (currentScrollY <= lastScrollY || currentScrollY === 0) {
       setScrollingUp(true);
     } else {
       setScrollingUp(false);

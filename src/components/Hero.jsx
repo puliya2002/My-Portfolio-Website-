@@ -12,13 +12,13 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { FiArrowDownRight, FiArrowRight } from "react-icons/fi";
 
 const fadeLeft = {
-  initial: { opacity: 0, x: -100 },
-  animate: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeInOut" } },
+  initial: { opacity: 0, y: -50 },
+  animate: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeInOut" } },
 };
 
-const fadeRight = {
-  initial: { opacity: 0, x: 50 },
-  animate: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeInOut" } },
+const fadeUp = {
+  initial: { opacity: 0, y: -100 },
+  animate: { opacity: 1, y: 0, transition: { duration: 1, } },
 };
 
 const springAnimation = {
@@ -57,7 +57,7 @@ const Hero = () => {
           className="text-3xl mb-10 text-gray-300/70"
           initial="initial"
           animate="animate"
-          variants={fadeRight}
+          variants={fadeUp}
         >
           Web Developer | UI/UX Designer | Graphic Designer
         </motion.p>
@@ -83,7 +83,7 @@ const Hero = () => {
           >
             <div>
               <p className="text-6xl">500+</p>
-              <p className="text-xl pt-2 opacity-65">
+              <p className="text-2xl pt-2 opacity-65">
                 Freelancing Projects Done
               </p>
             </div>
@@ -96,7 +96,7 @@ const Hero = () => {
               <p className="text-6xl">
                 4<span className="text-3xl"> years +</span>
               </p>
-              <p className="text-xl pt-2 opacity-65">Experience</p>
+              <p className="text-2xl pt-2 opacity-65">Experience</p>
             </div>
           </motion.div>
           <motion.div
@@ -105,7 +105,7 @@ const Hero = () => {
           >
             <div>
               <p className="text-5xl">★★★★★</p>
-              <p className="text-xl pt-2 opacity-65">On Fiverr</p>
+              <p className="text-2xl pt-2 opacity-65">On Fiverr</p>
             </div>
           </motion.div>
           <motion.div
@@ -114,7 +114,7 @@ const Hero = () => {
             variants={springAnimation}
           >
             <div className="flex-row flex justify-between items-center">
-              <p className="text-xl">Contact Now</p>
+              <p className="text-2xl">Contact Now</p>
               <div className="ml-2 cursor-pointer size-auto p-1 border-[2px] border-gray-500 rounded-full hover:bg-gradient-to-tr from-gray-700/20 to-gray-500/50">
                 <FiArrowRight className="h-5 w-5" />
               </div>
@@ -130,7 +130,7 @@ const Hero = () => {
                   className="hero-card aspect-square cursor-pointer"
                   whileHover={{ scale: "0.9" }}
                 >
-                  <FaLinkedinIn className="h-6 w-6 " />
+                  <FaLinkedinIn className="h-7 w-7 " />
                 </motion.div>
               </a>
               <a
@@ -141,7 +141,7 @@ const Hero = () => {
                 className="hero-card cursor-pointer aspect-square"
                 whileHover={{ scale: "0.9" }}
               >
-                <FaFacebookF className="h-6 w-6 " />
+                <FaFacebookF className="h-7 w-7 " />
               </motion.div>
               </a>
               <a
@@ -152,7 +152,7 @@ const Hero = () => {
                 className="hero-card cursor-pointer aspect-square"
                 whileHover={{ scale: "0.9" }}
               >
-                <SlSocialInstagram className="h-6 w-6" />
+                <SlSocialInstagram className="h-7 w-7" />
               </motion.div>
               </a>
               <a
@@ -163,7 +163,7 @@ const Hero = () => {
                 className="hero-card cursor-pointer aspect-square"
                 whileHover={{ scale: "0.9" }}
               >
-                <FaWhatsapp className="h-6 w-6" />
+                <FaWhatsapp className="h-7 w-7" />
               </motion.div>
               </a>
               <a
@@ -174,7 +174,7 @@ const Hero = () => {
                 className="hero-card cursor-pointer aspect-square"
                 whileHover={{ scale: "0.9" }}
               >
-                <FaGithub className="h-6 w-6" />
+                <FaGithub className="h-7 w-7" />
               </motion.div>
               </a>
             </div>
@@ -186,7 +186,7 @@ const Hero = () => {
             whileHover={{ scale: "0.95" }}
           >
             <div className="flex-row flex justify-between items-center">
-              <p className="text-xl">Download CV</p>
+              <p className="text-2xl">Download CV</p>
               <div className="ml-2 cursor-pointer size-auto p-1 border-[2px] border-gray-600 rounded-full hover:bg-gradient-to-tr from-gray-700/20 to-gray-500/50">
                 <FiArrowDownRight className="h-5 w-5" />
               </div>

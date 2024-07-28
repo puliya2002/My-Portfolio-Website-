@@ -13,6 +13,8 @@ import Lady from "../assets/lady.jpg";
 import LadySS from "../assets/ladyss.png";
 import Riverside from "../assets/riverside.jpg";
 import RiversideSS from "../assets/riversidess.png";
+import PortfolioSS from "../assets/portfolioss.png";
+import Portfolio from "../assets/portfolio.jpg";
 
 
 export const ProjectList = [
@@ -94,6 +96,18 @@ export const ProjectList = [
     giturl: "",
     weburl: "https://riverside-academy.com/",
     description: "Project for a client based in the UK who runs a baby photography business. The project involves creating a website to sell their online baby photography course. Wordpress-based project. Logo and all branding designed by me."
+    
+  },
+
+  {
+    id: 8,
+    title: "My Portfolio",
+    image: Portfolio,
+    skills: ["React", "Tailwind CSS", "CSS","Framer Motion" , "Figma", "Git"],
+    ss: PortfolioSS,
+    giturl: "https://github.com/puliya2002/My-Portfolio-Website-.git",
+    weburl: "https://pulinduvidmal.com/",
+    description: ""
     
   },
 
