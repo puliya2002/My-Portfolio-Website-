@@ -2,8 +2,10 @@ import React from "react";
 import { Drawer, Typography, IconButton } from "@material-tailwind/react";
 import { motion } from "framer-motion";
 import { NavLinks } from "../constants/index";
+import { useNavigate } from "react-router-dom";
 
 function Drawers({ open, onClose, onNavClick }) {
+  const navigate = useNavigate();
   return (
     <Drawer
       className="fixed right-0 bg-gray-900/90 border-gray-700/50 border-l-2 p-5 z-50"
@@ -39,6 +41,7 @@ function Drawers({ open, onClose, onNavClick }) {
               whileTap={{ scale: 0.9 }}
               className="cursor-pointer text-2xl py-5 font-normal odd:border-b-[1px] odd:border-gray-700 even:border-none"
               onClick={() => {
+                navigate(link.url2);
                 onNavClick(link.url);
                 onClose();
               }}

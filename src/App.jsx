@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Footer from "./components/Footer.jsx";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import PrjectPage from "./components/ProjectPage.jsx";
+import ContctPage from "./components/ContctPage.jsx";
 
 const App = () => {
   const [currentSection, setCurrentSection] = useState("");
@@ -19,6 +20,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div>
+      
         <Routes>
           <Route
             path="/"
@@ -60,6 +62,7 @@ const App = () => {
             }
           />
           <Route path="/project/:id" element={<PrjectPage />} />
+          <Route path="/contact" element={<ContctPage />} />
         </Routes>
         <Footer onNavClick={handleNavClick} className="overflow-hidden" />
       </div>

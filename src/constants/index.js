@@ -125,22 +125,26 @@ export const NavLinks = [
     id: 1,
     title: "Home",
     url: "hero",
+    url2: "/",
 
   },
   {
     id: 2,
     title: "About",
     url: "about",
+    url2: "/",
   },
   {
     id: 3,
     title: "Projects",
     url: "projects",
+    url2: "/",
   },
   {
     id: 4,
     title: "Contact",
-    url: "contact",
+    url: "",
+    url2: "contact",
   },
 
  

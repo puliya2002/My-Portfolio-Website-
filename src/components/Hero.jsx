@@ -10,6 +10,9 @@ import { SlSocialInstagram } from "react-icons/sl";
 import { motion } from "framer-motion";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FiArrowDownRight, FiArrowRight } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+
+
 
 const fadeLeft = {
   initial: { opacity: 0, y: -50 },
@@ -41,6 +44,8 @@ const Hero = () => {
     link.click();
     document.body.removeChild(link);
   };
+
+  const navigate = useNavigate();
 
   return (
     <section className="min-h-screen flex items-center">
@@ -112,6 +117,8 @@ const Hero = () => {
             className="h-40 sm:h-auto hero-card click cursor-pointer"
             whileHover={{ scale: "0.9" }}
             variants={springAnimation}
+            onClick={() => navigate("/contact")}
+            
           >
             <div className="flex-row flex justify-between items-center">
               <p className="text-2xl">Contact Now</p>
