@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import NavBar from "./NavBar";
 
 
 function ContctPage() {
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+
   return (
-    <div className="container max-w-3xl mx-auto justify-center p-5 pt-14 content-center z-50  ">
+    <div>
+      <NavBar />
+    <div className="container max-w-3xl mx-auto justify-center p-5 pt-14 content-center z-50 h-screen ">
       <div
         className="bg-gradient-to-br from-gray-500/30 to-gray-500/20
 border-white/5 border-2 rounded-xl shadow p-5  items-center justify-center flex-items-center flex flex-col py-20" 
@@ -31,6 +39,7 @@ border-white/5 border-2 rounded-xl shadow p-5  items-center justify-center flex-
       </div>
       
       
+    </div>
     </div>
   );
 }

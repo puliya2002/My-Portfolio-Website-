@@ -1,10 +1,15 @@
 // ProjectPage.js
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ProjectList } from "../constants";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 const ProjectPage = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { id } = useParams();
   const project = ProjectList.find((proj) => proj.id == id);
 
