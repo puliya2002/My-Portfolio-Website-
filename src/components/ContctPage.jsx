@@ -27,14 +27,14 @@ border-white/5 border-2 rounded-xl shadow p-5  items-center justify-center flex-
               <FaExternalLinkAlt />
             </div>
           </a>
-          <a href="mailto:contact@pulinduvidmal.com" target="_blank">
+          {/* <a href="mailto:contact@pulinduvidmal.com" target="_blank">
             <div
               className="flex gap-2 items-center border-[1.7px] rounded-full px-3 py-1 border-gray-700 cursor-pointer hover:bg-gray-500/50 bg-gray-500/10 w-fit hover:scale-95"
             >
               <p className="text-lg">contact@pulinduvidmal.com</p>
               <FaExternalLinkAlt />
             </div>
-          </a>
+          </a> */}
         </div>
       </div>
       

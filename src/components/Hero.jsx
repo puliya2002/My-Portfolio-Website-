@@ -36,14 +36,17 @@ const springAnimation = {
 };
 
 const Hero = () => {
+
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = `public/pulindu_vidmal_software_engineer_resume.pdf`;
+    link.href = "/pulindu_vidmal_software_engineer_resume.pdf"; 
     link.download = "pulindu_vidmal_software_engineer_resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
+  
+  
 
   const navigate = useNavigate();
 
