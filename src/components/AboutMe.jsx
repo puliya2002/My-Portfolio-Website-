@@ -27,7 +27,7 @@ function AboutMe() {
         transition={{ duration: 1, delay: 0.1 }}
       >
         A creative, logical and ambitious Software Engineer undergraduate
-        specializing in Web Development known for thinking outside the box and
+        specializing in Web Development and Graphic Design known for thinking outside the box and
         generating innovative ideas, thrive in collaborative environments,
         ensuring timely and excellent project delivery.
       </motion.p>

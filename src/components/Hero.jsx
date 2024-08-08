@@ -11,6 +11,8 @@ import { motion } from "framer-motion";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FiArrowDownRight, FiArrowRight } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/opacity.css';
 
 
 
@@ -79,10 +81,13 @@ const Hero = () => {
             className="hero-card row-span-2"
             variants={springAnimation}
           >
-            <img
+            <LazyLoadImage
               className="object-cover sm:max-h-100 w-screen p-6 rounded-[35px]"
               src={dpImage}
-              alt="hero"
+              alt="profile"
+              loading="lazy"
+              effect="opacity"
+              placeholderSrc={dpImage}
             />
           </motion.div>
           <motion.div

@@ -107,7 +107,7 @@ export const ProjectList = [
     ss: PortfolioSS,
     giturl: "https://github.com/puliya2002/My-Portfolio-Website-.git",
     weburl: "https://pulinduvidmal.com/",
-    description: ""
+    description: "Developed a portfolio website using React to showcase projects and skills. Designed an attractive UI/UX with Figma and enhanced the user experience with animations using Framer Motion. Leveraged React functional components, Hooks, and React Router to build a seamless and dynamic interface. Implemented image lazy loading to optimize performance and ensure fast loading times."
     
   },
 
