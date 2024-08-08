@@ -55,6 +55,8 @@ border-white/5 border-2 rounded-xl shadow p-5"
           className=" rounded-lg"        
           src={project.ss}
 
+          
+
         />
 
         <div className="flex pt-5 content-center justify-center gap-2">
