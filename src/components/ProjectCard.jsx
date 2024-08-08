@@ -32,6 +32,7 @@ function ProjectCard(props) {
           src={props.image}
           className="object-cover p-1 rounded-[15px] mt-3 h-[240px] sm:h-[270px] w-screen"
           alt="project"
+          loading='lazy'
         />
       </div  >
       

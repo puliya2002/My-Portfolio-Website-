@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import dpImage from "../assets/me.png";
+import dpImage from "../assets/me.webp";
 import {
   FaFacebookF,
   FaGithub,
@@ -12,7 +12,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { FiArrowDownRight, FiArrowRight } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import 'react-lazy-load-image-component/src/effects/opacity.css';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 
@@ -82,12 +82,12 @@ const Hero = () => {
             variants={springAnimation}
           >
             <LazyLoadImage
-              className="object-cover sm:max-h-100 w-screen p-6 rounded-[35px]"
+              className="object-cover sm:max-h-100 w-screen p-6 rounded-[35px] "
               src={dpImage}
               alt="profile"
-              loading="lazy"
-              effect="opacity"
-              placeholderSrc={dpImage}
+              effect="blur"
+
+              
             />
           </motion.div>
           <motion.div

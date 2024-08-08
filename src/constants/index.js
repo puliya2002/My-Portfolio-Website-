@@ -1,20 +1,19 @@
-import dpImage from "../assets/me.png";
-import MoneyTrack from "../assets/app.jpg";
-import GreenSS from "../assets/greenss.png";
-import MusicCity from "../assets/music.jpg";
-import GreenSupper from "../assets/green.jpg";
-import Appss from "../assets/appss.jpg";
-import Musicss from "../assets/musicss.png";
-import Provision from "../assets/provision.jpg";
-import Provisionss from "../assets/provisionss.png";
-import SouthAlba from "../assets/southalba.jpg";
-import SouthAlbaSS from "../assets/southalbass.png";
-import Lady from "../assets/lady.jpg";
-import LadySS from "../assets/ladyss.png";
-import Riverside from "../assets/riverside.jpg";
-import RiversideSS from "../assets/riversidess.png";
-import PortfolioSS from "../assets/portfolioss.png";
-import Portfolio from "../assets/portfolio.jpg";
+import MoneyTrack from "../assets/app.webp";
+import GreenSS from "../assets/greenss.webp";
+import MusicCity from "../assets/music.webp";
+import GreenSupper from "../assets/green.webp";
+import Appss from "../assets/appss.webp";
+import Musicss from "../assets/musicss.webp";
+import Provision from "../assets/provision.webp";
+import Provisionss from "../assets/provisionss.webp";
+import SouthAlba from "../assets/southalba.webp";
+import SouthAlbaSS from "../assets/southalbass.webp";
+import Lady from "../assets/lady.webp";
+import LadySS from "../assets/ladyss.webp";
+import Riverside from "../assets/riverside.webp";
+import RiversideSS from "../assets/riversidess.webp";
+import PortfolioSS from "../assets/portfolioss.webp";
+import Portfolio from "../assets/portfolio.webp";
 
 
 export const ProjectList = [
