@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { ProjectList } from "../constants";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/opacity.css';
 
 const ProjectPage = () => {
   useEffect(() => {
@@ -51,8 +53,12 @@ border-white/5 border-2 rounded-xl shadow p-5"
         </div>
 
         <img
+        <LazyLoadImage
+          
           alt={project.title}
-          className=" rounded-lg"        
+          className=" rounded-lg"
+          placeholderSrc = {project.ss}
+          effect="opacity"
           src={project.ss}
 
         />
