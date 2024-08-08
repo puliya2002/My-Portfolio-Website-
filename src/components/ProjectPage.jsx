@@ -3,8 +3,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ProjectList } from "../constants";
 import { FaExternalLinkAlt } from "react-icons/fa";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import 'react-lazy-load-image-component/src/effects/blur.css';
+
 
 const ProjectPage = () => {
   useEffect(() => {
@@ -51,11 +50,11 @@ border-white/5 border-2 rounded-xl shadow p-5"
           <p className="opacity-50">{project.description}</p>
         </div>
 
-        <LazyLoadImage
+        <img
           alt={project.title}
           className=" rounded-lg"        
           src={project.ss}
-          effect="blur"
+
         />
 
         <div className="flex pt-5 content-center justify-center gap-2">
