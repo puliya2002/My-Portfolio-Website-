@@ -47,7 +47,7 @@ border-white/5 border-2 rounded-xl shadow p-5"
           </a>
         </div>
         <div className=" content-center pb-6">
-          <p className="text-2xl font-medium pb-2 ">{project.title}</p>
+          <p className="text-2xl font-medium py-2 ">{project.title}</p>
           <p className="opacity-50">{project.description}</p>
         </div>
 
