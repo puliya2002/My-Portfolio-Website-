@@ -15,8 +15,8 @@
     "flowbite-react": "^0.10.1",
     "framer-motion": "^11.3.6",
     "imagemin-webp": "^8.0.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-icons": "^5.2.1",
     "react-lazy-load-image-component": "^1.6.2",
     "react-router-dom": "^6.25.1"
@@ -32,6 +32,6 @@
     "eslint-plugin-react-refresh": "^0.4.7",
     "postcss": "^8.4.39",
     "tailwindcss": "^3.4.4",
-    "vite": "^5.3.1"
+    "vite": "^6.0.11"
   }
 }
