@@ -88,6 +88,10 @@ const Hero = () => {
               alt="profile"
               loading="lazy"
               effect="blur"
+              
+
+
+              
             />
           </motion.div>
           <motion.div
@@ -126,6 +130,7 @@ const Hero = () => {
             whileHover={{ scale: "0.9" }}
             variants={springAnimation}
             onClick={() => navigate("/contact")}
+            
           >
             <div className="flex-row flex justify-between items-center">
               <p className="text-2xl">Contact Now</p>
@@ -148,47 +153,53 @@ const Hero = () => {
                 </motion.div>
               </a>
               <a
-                href="https://www.facebook.com/pulindu.vidmal.10 "
+                href="https://web.facebook.com/pulindu.vidmal.10 "
                 target="_blank"
               >
-                <motion.div
-                  className="hero-card cursor-pointer aspect-square"
-                  whileHover={{ scale: "0.9" }}
-                >
-                  <FaFacebookF className="h-7 w-7 " />
-                </motion.div>
+              <motion.div
+                className="hero-card cursor-pointer aspect-square"
+                whileHover={{ scale: "0.9" }}
+              >
+                <FaFacebookF className="h-7 w-7 " />
+              </motion.div>
               </a>
               <a
                 href="https://www.instagram.com/p_u_l_i_y_a_official/"
                 target="_blank"
               >
-                <motion.div
-                  className="hero-card cursor-pointer aspect-square"
-                  whileHover={{ scale: "0.9" }}
-                >
-                  <SlSocialInstagram className="h-7 w-7" />
-                </motion.div>
+              <motion.div
+                className="hero-card cursor-pointer aspect-square"
+                whileHover={{ scale: "0.9" }}
+              >
+                <SlSocialInstagram className="h-7 w-7" />
+              </motion.div>
               </a>
-              <a href="https://wa.me/qr/GGBM57BKKRIKL1 " target="_blank">
-                <motion.div
-                  className="hero-card cursor-pointer aspect-square"
-                  whileHover={{ scale: "0.9" }}
-                >
-                  <FaWhatsapp className="h-7 w-7" />
-                </motion.div>
+              <a
+                href="https://wa.me/qr/GGBM57BKKRIKL1 "
+                target="_blank"
+              >
+              <motion.div
+                className="hero-card cursor-pointer aspect-square"
+                whileHover={{ scale: "0.9" }}
+              >
+                <FaWhatsapp className="h-7 w-7" />
+              </motion.div>
               </a>
-              <a href="https://github.com/puliya2002 " target="_blank">
-                <motion.div
-                  className="hero-card cursor-pointer aspect-square"
-                  whileHover={{ scale: "0.9" }}
-                >
-                  <FaGithub className="h-7 w-7" />
-                </motion.div>
+              <a
+                href="https://github.com/puliya2002 "
+                target="_blank"
+              >
+              <motion.div
+                className="hero-card cursor-pointer aspect-square"
+                whileHover={{ scale: "0.9" }}
+              >
+                <FaGithub className="h-7 w-7" />
+              </motion.div>
               </a>
             </div>
           </motion.div>
           <motion.div
-            className="gap-3 hero-card sm:col-span-2 h-[85px] sm:h-auto cursor-pointer"
+          className="gap-3 hero-card sm:col-span-2 h-[85px] sm:h-auto cursor-pointer"
             variants={springAnimation}
             onClick={handleDownload}
             whileHover={{ scale: "0.95" }}
