@@ -20,21 +20,12 @@ import Store from "../assets/store&snore.webp";
 import StoreSS from "../assets/store&snoress.webp";
 import Seen from "../assets/seen.webp";
 import SeenSS from "../assets/seenss.webp";
+import Portfoliolink from "../assets/portfoliolink.webp";
+import PortfoliolinkSS from "../assets/portfoliolinkss.webp";
 
 export const ProjectList = [
   {
     id: 1,
-    title: "Money Tack",
-    image: MoneyTrack,
-    skills: ["Flutter", "Firebase", "UI/UX", "Git"],
-    ss: Appss,
-    giturl: "https://github.com/puliya2002/money_track.git",
-    weburl: "",
-    description:
-      "As part of a second-year university group project, We developed MoneyTrack, an expense tracking application using the Flutter framework and integrated with a Firebase database. The goal of MoneyTrack is to provide a user-friendly platform for recording and monitoring expenses efficiently. This project showcases my skills in teamwork, mobile app development, database integration, and creating intuitive user interfaces.",
-  },
-  {
-    id: 2,
     title: "Sovereign Trust",
     image: Trust,
     skills: ["WordpPress", "Woocommerce", "Elementor", "JavaScript", "CSS"],
@@ -44,19 +35,28 @@ export const ProjectList = [
     description:
       "Project for a client based in the USA who runs a trust-based business. Wordpress-based project. Logo and all branding designed by me.",
   },
-
   {
-    id: 3,
-    title: "Green Supermarket",
-    image: GreenSupper,
-    skills: ["HTML", "CSS", "JavaScript", "JAVA", "Git", "SQL"],
-    ss: GreenSS,
-    giturl: "https://github.com/puliya2002/GreenSuperMarket.git",
+    id: 2,
+    title: "PortfolioLink (upcoming)",
+    image: Portfoliolink,
+    skills: ["Next.js", "Tailwind CSS", "TypeScript", "JavaScript", "MongoDB"],
+    ss: PortfoliolinkSS,
+    giturl: "https://github.com/puliya2002/portfoliolink.git",
     weburl: "",
     description:
-      "University second-year group project involved developing an e-commerce web application tailored for a supermarket We used HTML, CSS, and JavaScript as front-end technologies and JAVA for the backend. Integrated PayPal sandbox as the payment gateway.",
+      "PortfoliLink is my university final-year project, a SaaS platform designed to help freelancers and creative professionals create and showcase personalized portfolios effortlessly. It features an intuitive interface, mobile app support for real-time updates, and customizable templates tailored to various professions. The platform removes technical barriers by providing personalized URLs under a shared domain. Currently 20% complete, PortfoliLink is set to be finished next month, making professional branding more accessible and affordable.",
   },
-
+  {
+    id: 3,
+    title: "Money Tack",
+    image: MoneyTrack,
+    skills: ["Flutter", "Firebase", "UI/UX", "Git"],
+    ss: Appss,
+    giturl: "https://github.com/puliya2002/money_track.git",
+    weburl: "",
+    description:
+      "As part of a second-year university group project, We developed MoneyTrack, an expense tracking application using the Flutter framework and integrated with a Firebase database. The goal of MoneyTrack is to provide a user-friendly platform for recording and monitoring expenses efficiently. This project showcases my skills in teamwork, mobile app development, database integration, and creating intuitive user interfaces.",
+  },
   {
     id: 4,
     title: "Store and Snore Nashville",
@@ -71,6 +71,18 @@ export const ProjectList = [
 
   {
     id: 5,
+    title: "Green Supermarket",
+    image: GreenSupper,
+    skills: ["HTML", "CSS", "JavaScript", "JAVA", "Git", "SQL"],
+    ss: GreenSS,
+    giturl: "https://github.com/puliya2002/GreenSuperMarket.git",
+    weburl: "",
+    description:
+      "University second-year group project involved developing an e-commerce web application tailored for a supermarket We used HTML, CSS, and JavaScript as front-end technologies and JAVA for the backend. Integrated PayPal sandbox as the payment gateway.",
+  },
+
+  {
+    id: 6,
     title: "SEEN Org",
     image: Seen,
     skills: ["WordPress", "Woocommerce", "CSS", "Paypal", "Figma"],
@@ -82,7 +94,7 @@ export const ProjectList = [
   },
 
   {
-    id: 6,
+    id: 7,
     title: "Music City Luggage Lounge",
     image: MusicCity,
     skills: ["WordPress", "Woocommerce", "CSS", "Paypal"],
@@ -93,7 +105,7 @@ export const ProjectList = [
       "Excited to share my latest freelancing project: a comprehensive website and luggage booking system. This project showcases my branding, design, and web development skills using WordPress and WooCommerce to deliver an exceptional user experience. The website features a robust admin dashboard and a booking calendar to streamline operations and enhance usability for staff and customers. By leveraging WordPress's capabilities, I created a platform that is both visually appealing and highly functional.",
   },
   {
-    id: 7,
+    id: 8,
     title: "ProVisions Graphic",
     image: Provision,
     skills: ["Startup", "WordPress", "Woocommerce", "CSS", "PHP", "Stripe"],
@@ -104,7 +116,7 @@ export const ProjectList = [
       "My Startup for offering monthly subscription packages for graphic designs. WordPress and WooCommerce-based project. This project will incorporate advanced functionalities such as membership and subscription features to facilitate seamless user experiences and recurring revenue models. I integrated Stripe as the payment gateway.",
   },
   {
-    id: 8,
+    id: 9,
     title: "South Alba Sports",
     image: SouthAlba,
     skills: ["WordPress", "Woocommerce", "CSS", "Paypal"],
@@ -116,7 +128,7 @@ export const ProjectList = [
   },
 
   {
-    id: 9,
+    id: 10,
     title: "Lady Luck",
     image: Lady,
     skills: ["WordPress", "Woocommerce", "CSS", "Paypal"],
@@ -128,7 +140,7 @@ export const ProjectList = [
   },
 
   {
-    id: 10,
+    id: 11,
     title: "Riverside Accademy",
     image: Riverside,
     skills: ["WordPress", "Woocommerce", "CSS"],
@@ -140,7 +152,7 @@ export const ProjectList = [
   },
 
   {
-    id: 11,
+    id: 12,
     title: "My Portfolio",
     image: Portfolio,
     skills: ["React", "Tailwind CSS", "CSS", "Framer Motion", "Figma", "Git"],
