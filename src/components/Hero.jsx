@@ -88,14 +88,10 @@ const Hero = () => {
               alt="profile"
               loading="lazy"
               effect="blur"
-              
-
-
-              
             />
           </motion.div>
           <motion.div
-            className="h-40 sm:h-auto hero-card"
+            className="h-40 sm:h-auto hero-card p-2"
             variants={springAnimation}
           >
             <div>
@@ -106,7 +102,7 @@ const Hero = () => {
             </div>
           </motion.div>
           <motion.div
-            className="h-40 sm:h-auto hero-card"
+            className="h-40 sm:h-auto hero-card p-2"
             variants={springAnimation}
           >
             <div>
@@ -117,20 +113,19 @@ const Hero = () => {
             </div>
           </motion.div>
           <motion.div
-            className="h-40 sm:h-auto hero-card"
+            className="h-40 sm:h-auto hero-card p-2"
             variants={springAnimation}
           >
             <div>
-              <p className="text-5xl">★★★★★</p>
+              <p className="text-[40px] md:text-[40px] sm:text-4xl">★★★★★</p>
               <p className="text-2xl pt-2 opacity-65">On Fiverr</p>
             </div>
           </motion.div>
           <motion.div
-            className="h-40 sm:h-auto hero-card click cursor-pointer"
+            className="h-40 sm:h-auto hero-card click cursor-pointer p-2"
             whileHover={{ scale: "0.9" }}
             variants={springAnimation}
             onClick={() => navigate("/contact")}
-            
           >
             <div className="flex-row flex justify-between items-center">
               <p className="text-2xl">Contact Now</p>
@@ -140,13 +135,13 @@ const Hero = () => {
             </div>
           </motion.div>
           <motion.div variants={springAnimation}>
-            <div className="grid grid-cols-5 gap-3">
+            <div className="grid grid-cols-5 gap-3 sm:gap-1 md:gap-3">
               <a
                 href="https://www.linkedin.com/in/pulindu-vidmal-57a7851a4/ "
                 target="_blank"
               >
                 <motion.div
-                  className="hero-card aspect-square cursor-pointer"
+                  className="hero-card aspect-square cursor-pointer p-2"
                   whileHover={{ scale: "0.9" }}
                 >
                   <FaLinkedinIn className="h-7 w-7 " />
@@ -156,55 +151,49 @@ const Hero = () => {
                 href="https://web.facebook.com/pulindu.vidmal.10 "
                 target="_blank"
               >
-              <motion.div
-                className="hero-card cursor-pointer aspect-square"
-                whileHover={{ scale: "0.9" }}
-              >
-                <FaFacebookF className="h-7 w-7 " />
-              </motion.div>
+                <motion.div
+                  className="hero-card cursor-pointer aspect-square p-2"
+                  whileHover={{ scale: "0.9" }}
+                >
+                  <FaFacebookF className="h-7 w-7 " />
+                </motion.div>
               </a>
               <a
                 href="https://www.instagram.com/p_u_l_i_y_a_official/"
                 target="_blank"
               >
-              <motion.div
-                className="hero-card cursor-pointer aspect-square"
-                whileHover={{ scale: "0.9" }}
-              >
-                <SlSocialInstagram className="h-7 w-7" />
-              </motion.div>
+                <motion.div
+                  className="hero-card cursor-pointer aspect-square p-2"
+                  whileHover={{ scale: "0.9" }}
+                >
+                  <SlSocialInstagram className="h-7 w-7" />
+                </motion.div>
               </a>
-              <a
-                href="https://wa.me/qr/GGBM57BKKRIKL1 "
-                target="_blank"
-              >
-              <motion.div
-                className="hero-card cursor-pointer aspect-square"
-                whileHover={{ scale: "0.9" }}
-              >
-                <FaWhatsapp className="h-7 w-7" />
-              </motion.div>
+              <a href="https://wa.me/qr/GGBM57BKKRIKL1 " target="_blank">
+                <motion.div
+                  className="hero-card cursor-pointer aspect-square p-2"
+                  whileHover={{ scale: "0.9" }}
+                >
+                  <FaWhatsapp className="h-7 w-7" />
+                </motion.div>
               </a>
-              <a
-                href="https://github.com/puliya2002 "
-                target="_blank"
-              >
-              <motion.div
-                className="hero-card cursor-pointer aspect-square"
-                whileHover={{ scale: "0.9" }}
-              >
-                <FaGithub className="h-7 w-7" />
-              </motion.div>
+              <a href="https://github.com/puliya2002 " target="_blank">
+                <motion.div
+                  className="hero-card cursor-pointer aspect-square p-2"
+                  whileHover={{ scale: "0.9" }}
+                >
+                  <FaGithub className="h-7 w-7" />
+                </motion.div>
               </a>
             </div>
           </motion.div>
           <motion.div
-          className="gap-3 hero-card sm:col-span-2 h-[85px] sm:h-auto cursor-pointer"
+            className="gap-3 hero-card sm:col-span-2 h-[85px] sm:h-auto cursor-pointer"
             variants={springAnimation}
             onClick={handleDownload}
             whileHover={{ scale: "0.95" }}
           >
-            <div className="flex-row flex justify-between items-center">
+            <div className="flex-row flex justify-between items-center p-2">
               <p className="text-2xl">Download CV</p>
               <div className="ml-2 cursor-pointer size-auto p-1 border-[2px] border-gray-600 rounded-full hover:bg-gradient-to-tr from-gray-700/20 to-gray-500/50">
                 <FiArrowDownRight className="h-5 w-5" />
