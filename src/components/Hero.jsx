@@ -1,4 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import dpImage from "../assets/me.webp";
 import {
   FaFacebookF,
@@ -7,16 +9,11 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import { SlSocialInstagram } from "react-icons/sl";
-import { motion } from "framer-motion";
-import { FaArrowRightLong } from "react-icons/fa6";
 import { FiArrowDownRight, FiArrowRight } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import "react-lazy-load-image-component/src/effects/blur.css";
 
-
-
-
+// Updated animation variants to match the new style
 const fadeLeft = {
   initial: { opacity: 0, y: -50 },
   animate: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeInOut" } },
@@ -24,7 +21,7 @@ const fadeLeft = {
 
 const fadeUp = {
   initial: { opacity: 0, y: -100 },
-  animate: { opacity: 1, y: 0, transition: { duration: 1, } },
+  animate: { opacity: 1, y: 0, transition: { duration: 1 } },
 };
 
 const springAnimation = {
@@ -39,39 +36,43 @@ const springAnimation = {
 };
 
 const Hero = () => {
+  const navigate = useNavigate();
 
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/pulindu_vidmal_software_engineer_resume.pdf"; 
+    link.href = "/pulindu_vidmal_software_engineer_resume.pdf";
     link.download = "pulindu_vidmal_software_engineer_resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
-  
-  
-
-  const navigate = useNavigate();
 
   return (
     <section className="min-h-screen flex items-center">
       <div className="d-container z-10">
         <motion.h1
-          className="mb-3 mt-[80px]"
+          className="mb-3 mt-[80px] lg:mt-[50px]"
           initial="initial"
           animate="animate"
           variants={fadeLeft}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
         >
           Hi, I'm Pulindu
         </motion.h1>
-        <motion.p
-          className="text-3xl mb-10 text-gray-300/70"
+
+        <motion.div
           initial="initial"
           animate="animate"
           variants={fadeUp}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
         >
-          Web Developer | UI/UX Designer | Graphic Designer
-        </motion.p>
+          <p className="text-3xl mb-10 text-gray-300/70">
+            Web Developer | UI/UX Designer | Graphic Designer
+          </p>
+        </motion.div>
+
         <motion.div
           className="grid grid-col-1 sm:grid-cols-3 gap-3"
           initial="initial"
@@ -81,18 +82,23 @@ const Hero = () => {
           <motion.div
             className="hero-card row-span-2"
             variants={springAnimation}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
           >
             <LazyLoadImage
-              className="object-cover sm:max-h-100 w-screen p-6 rounded-[35px] "
+              className="object-cover sm:max-h-100 w-screen p-6 rounded-[35px]"
               src={dpImage}
               alt="profile"
               loading="lazy"
               effect="blur"
             />
           </motion.div>
+
           <motion.div
             className="h-40 sm:h-auto hero-card p-2"
             variants={springAnimation}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
           >
             <div>
               <p className="text-6xl">500+</p>
@@ -101,30 +107,39 @@ const Hero = () => {
               </p>
             </div>
           </motion.div>
+
           <motion.div
-            className="h-40 sm:h-auto hero-card p-2"
+            className="h-40 md:h-auto hero-card p-2"
             variants={springAnimation}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
           >
             <div>
               <p className="text-6xl">
-                4<span className="text-3xl"> years +</span>
+                5<span className="text-3xl"> years +</span>
               </p>
               <p className="text-2xl pt-2 opacity-65">Experience</p>
             </div>
           </motion.div>
+
           <motion.div
-            className="h-40 sm:h-auto hero-card p-2"
+            className="h-40 md:h-auto hero-card p-2"
             variants={springAnimation}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
           >
             <div>
               <p className="text-[40px] md:text-[40px] sm:text-4xl">★★★★★</p>
               <p className="text-2xl pt-2 opacity-65">On Fiverr</p>
             </div>
           </motion.div>
+
           <motion.div
-            className="h-40 sm:h-auto hero-card click cursor-pointer p-2"
-            whileHover={{ scale: "0.9" }}
+            className="h-40 sm:h-auto hero-card click cursor-pointer p-2 "
+            whileHover={{ scale: 0.95 }}
             variants={springAnimation}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             onClick={() => navigate("/contact")}
           >
             <div className="flex-row flex justify-between items-center">
@@ -134,64 +149,87 @@ const Hero = () => {
               </div>
             </div>
           </motion.div>
-          <motion.div variants={springAnimation}>
+
+          <motion.div
+            variants={springAnimation}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+          >
             <div className="grid grid-cols-5 gap-3 sm:gap-1 md:gap-3">
               <a
-                href="https://www.linkedin.com/in/pulindu-vidmal-57a7851a4/ "
+                href="https://www.linkedin.com/in/pulindu-vidmal-57a7851a4/"
                 target="_blank"
+                rel="noreferrer"
               >
                 <motion.div
                   className="hero-card aspect-square cursor-pointer p-2"
-                  whileHover={{ scale: "0.9" }}
+                  whileHover={{ scale: 0.9 }}
                 >
-                  <FaLinkedinIn className="h-7 w-7 " />
+                  <FaLinkedinIn className="h-7 w-7" />
                 </motion.div>
               </a>
+
               <a
-                href="https://web.facebook.com/pulindu.vidmal.10 "
+                href="https://web.facebook.com/pulindu.vidmal.10"
                 target="_blank"
+                rel="noreferrer"
               >
                 <motion.div
                   className="hero-card cursor-pointer aspect-square p-2"
-                  whileHover={{ scale: "0.9" }}
+                  whileHover={{ scale: 0.9 }}
                 >
-                  <FaFacebookF className="h-7 w-7 " />
+                  <FaFacebookF className="h-7 w-7" />
                 </motion.div>
               </a>
+
               <a
                 href="https://www.instagram.com/p_u_l_i_y_a_official/"
                 target="_blank"
+                rel="noreferrer"
               >
                 <motion.div
                   className="hero-card cursor-pointer aspect-square p-2"
-                  whileHover={{ scale: "0.9" }}
+                  whileHover={{ scale: 0.9 }}
                 >
                   <SlSocialInstagram className="h-7 w-7" />
                 </motion.div>
               </a>
-              <a href="https://wa.me/qr/GGBM57BKKRIKL1 " target="_blank">
+
+              <a
+                href="https://wa.me/qr/GGBM57BKKRIKL1"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <motion.div
                   className="hero-card cursor-pointer aspect-square p-2"
-                  whileHover={{ scale: "0.9" }}
+                  whileHover={{ scale: 0.9 }}
                 >
                   <FaWhatsapp className="h-7 w-7" />
                 </motion.div>
               </a>
-              <a href="https://github.com/puliya2002 " target="_blank">
+
+              <a
+                href="https://github.com/puliya2002"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <motion.div
                   className="hero-card cursor-pointer aspect-square p-2"
-                  whileHover={{ scale: "0.9" }}
+                  whileHover={{ scale: 0.9 }}
                 >
                   <FaGithub className="h-7 w-7" />
                 </motion.div>
               </a>
             </div>
           </motion.div>
+
           <motion.div
             className="gap-3 hero-card sm:col-span-2 h-[85px] sm:h-auto cursor-pointer"
             variants={springAnimation}
+            whileHover={{ scale: 0.95 }}
             onClick={handleDownload}
-            whileHover={{ scale: "0.95" }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
           >
             <div className="flex-row flex justify-between items-center p-2">
               <p className="text-2xl">Download CV</p>
