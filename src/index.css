@@ -105,6 +105,23 @@ body {
   @apply bg-blue-500/10 shadow-[0_4px_28px_rgba(0,0,0,0.45)];
 }
 
+/* Static content cards — keep base look on hover */
+.glass-card--static:hover {
+  background-color: rgb(255 255 255 / 0.06);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
+}
+
+.glass-card--static:hover::before {
+  background: linear-gradient(
+    140deg,
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(148, 163, 184, 0.16) 32%,
+    rgba(59, 130, 246, 0.15) 70%,
+    rgba(34, 211, 238, 0.08) 100%
+  );
+  opacity: 0.88;
+}
+
 .navbar-card {
   @apply hover:bg-white/[0.07] transition duration-300 ease-in-out rounded-lg;
 }
@@ -118,6 +135,17 @@ body {
          hover:bg-white/[0.09]
          hover:shadow-[0_4px_24px_rgba(0,0,0,0.40)]
          transition-all duration-300 ease-out;
+}
+
+@media (max-width: 767px) {
+  .hero-card {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .border-beam {
+    display: none;
+  }
 }
 
 .hero-card--static:hover {

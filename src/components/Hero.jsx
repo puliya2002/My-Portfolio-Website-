@@ -11,22 +11,20 @@ import {
 import { SlSocialInstagram } from "react-icons/sl";
 import { FiArrowDownRight, FiArrowUpRight } from "react-icons/fi";
 import { Loader2, Star } from "lucide-react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
 
 const springAnimation = {
-  initial: { scale: 0.92, y: 18, opacity: 0 },
+  initial: { scale: 0.96, y: 10, opacity: 0 },
   animate: {
     scale: 1,
     y: 0,
     opacity: 1,
-    transition: { type: "spring", mass: 1, stiffness: 280, damping: 28 },
+    transition: { type: "spring", mass: 0.8, stiffness: 320, damping: 28 },
   },
 };
 
 const fadeLeft = {
-  initial: { opacity: 0, y: -40 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.9, ease: "easeOut" } },
+  initial: { opacity: 0, y: -16 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
 };
 
 const FIVERR_RATING = 4.9;
@@ -34,8 +32,8 @@ const FIVERR_REVIEWS = 429;
 const FIVERR_STAR_FRACTION = FIVERR_RATING % 1;
 
 const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.9, delay: 0.15 } },
+  initial: { opacity: 0, y: 10 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.4, delay: 0.05 } },
 };
 
 const socialLinks = [
@@ -68,7 +66,6 @@ function BorderBeam({ delay = 0, duration = 14, size }) {
     <span
       className="border-beam"
       style={{
-        // Negative delay starts each beam mid-loop so cards look staggered
         "--beam-delay": `-${delay}s`,
         "--beam-duration": `${duration}s`,
         ...(size != null ? { "--beam-size": `${size}px` } : null),
@@ -101,8 +98,8 @@ const Hero = () => {
     <section className="min-h-screen flex items-center relative">
       {/* Ambient background blobs */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-blue-600/8 blur-[120px]" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-cyan-500/5 blur-[100px]" />
+        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-blue-600/8 blur-[120px] max-md:blur-[80px] max-md:w-[320px] max-md:h-[320px]" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-cyan-500/5 blur-[100px] max-md:hidden" />
       </div>
 
       <div className="d-container z-10 w-full">
@@ -112,18 +109,12 @@ const Hero = () => {
           initial="initial"
           animate="animate"
           variants={fadeLeft}
-          viewport={{ once: true }}
         >
           Hi, I'm Pulindu
         </motion.h1>
 
         {/* Subtitle */}
-        <motion.div
-          initial="initial"
-          animate="animate"
-          variants={fadeUp}
-          viewport={{ once: true }}
-        >
+        <motion.div initial="initial" animate="animate" variants={fadeUp}>
           <p className="text-base md:text-xl sm:max-md:text-lg mb-10 text-gray-400 tracking-wide leading-relaxed">
             BSc (Hons) in Software Engineering
             <span className="text-gray-600 mx-2">|</span>
@@ -136,7 +127,7 @@ const Hero = () => {
           className="grid grid-cols-1 sm:grid-cols-3 gap-3"
           initial="initial"
           animate="animate"
-          transition={{ staggerChildren: 0.07 }}
+          transition={{ staggerChildren: 0.04 }}
         >
           {/* Profile photo */}
           <motion.div
@@ -144,12 +135,12 @@ const Hero = () => {
             variants={springAnimation}
           >
             <BorderBeam delay={0.9} size={150} />
-            <LazyLoadImage
+            <img
               className="relative z-10 object-cover w-full h-full p-4 rounded-[28px] sm:max-md:rounded-2xl md:rounded-[28px]"
               src={dpImage}
               alt="Pulindu Vidmal"
-              visibleByDefault
-              effect="blur"
+              width={1278}
+              height={1362}
               decoding="async"
               fetchPriority="high"
               loading="eager"
@@ -190,14 +181,13 @@ const Hero = () => {
             </p>
           </motion.div>
 
-          {/* Stat - Fiverr rating (stars emphasize 4.9 via last partial star) */}
+          {/* Stat - Fiverr rating */}
           <motion.div
             className="h-40 md:h-auto hero-card hero-card--static p-5 flex flex-col justify-center text-start gap-2 relative overflow-hidden"
             variants={springAnimation}
             aria-label={`${FIVERR_RATING} out of 5 stars on Fiverr, ${FIVERR_REVIEWS} reviews`}
           >
             <BorderBeam delay={6} />
-            {/* Stars + 4.9 on one row; reviews on next line */}
             <div className="relative z-10 flex flex-col gap-1">
               <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                 <div className="flex items-center gap-0.5 shrink-0" aria-hidden>

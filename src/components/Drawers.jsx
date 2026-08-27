@@ -1,7 +1,7 @@
 import React from "react";
 import { Drawer, Typography, IconButton } from "@material-tailwind/react";
 import { motion } from "framer-motion";
-import { NavLinks } from "../constants/index";
+import { NavLinks } from "../constants/nav";
 import { useNavigate } from "react-router-dom";
 import { FiX } from "react-icons/fi";
 

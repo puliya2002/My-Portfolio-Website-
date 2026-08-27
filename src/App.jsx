@@ -1,14 +1,17 @@
-import React, { useState, useLayoutEffect, useRef, useEffect } from "react";
+import React, { useState, useLayoutEffect, useRef, useEffect, lazy, Suspense } from "react";
 import Home from "./components/Home.jsx";
 import Footer from "./components/Footer.jsx";
 import { Route, Routes, BrowserRouter, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { MouseLight } from "./components/MouseMove.jsx";
-import ProjectPage from "./components/ProjectPage.jsx";
-import ContactPage from "./components/ContctPage.jsx";
 import LoadingScreen from "./components/LoadingScreen.jsx";
 
+const ProjectPage = lazy(() => import("./components/ProjectPage.jsx"));
+const ContactPage = lazy(() => import("./components/ContctPage.jsx"));
+
 const SCROLL_STORAGE_KEY = "portfolio:homeScrollY";
+const MIN_LOADER_MS = 700;
+const MAX_LOADER_MS = 1400;
 
 function readSavedScrollY() {
   const raw = sessionStorage.getItem(SCROLL_STORAGE_KEY);
@@ -101,18 +104,25 @@ function AppContent({ onNavClick }) {
             path="/project/:slug"
             element={
               <div className="fixed inset-0 z-50 overflow-y-auto overscroll-y-contain bg-black">
-                <ProjectPage />
+                <Suspense fallback={null}>
+                  <ProjectPage />
+                </Suspense>
               </div>
             }
           />
-          <Route path="/contact" element={<ContactPage />} />
+          <Route
+            path="/contact"
+            element={
+              <Suspense fallback={null}>
+                <ContactPage />
+              </Suspense>
+            }
+          />
         </Routes>
       </div>
     </>
   );
 }
-
-const MIN_LOADER_MS = 1100;
 
 const App = () => {
   const [currentSection, setCurrentSection] = useState("");
@@ -127,9 +137,11 @@ const App = () => {
 
     const started = performance.now();
     let cancelled = false;
+    let finished = false;
 
     const finish = () => {
-      if (cancelled) return;
+      if (cancelled || finished) return;
+      finished = true;
       const elapsed = performance.now() - started;
       const wait = Math.max(0, MIN_LOADER_MS - elapsed);
       window.setTimeout(() => {
@@ -137,19 +149,19 @@ const App = () => {
       }, wait);
     };
 
-    if (document.readyState === "complete") {
-      finish();
-    } else {
-      window.addEventListener("load", finish, { once: true });
-    }
+    // Don't wait for full window.load (all images) — reveal once fonts + paint are ready
+    const fontsReady = document.fonts?.ready ?? Promise.resolve();
+    const nextPaint = new Promise((resolve) => {
+      requestAnimationFrame(() => requestAnimationFrame(resolve));
+    });
 
-    // Fallback if load is slow / stuck
-    const fallback = window.setTimeout(finish, 2200);
+    Promise.all([fontsReady, nextPaint]).then(finish);
+
+    const fallback = window.setTimeout(finish, MAX_LOADER_MS);
 
     return () => {
       cancelled = true;
       window.clearTimeout(fallback);
-      window.removeEventListener("load", finish);
     };
   }, []);
 

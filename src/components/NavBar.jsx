@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import { BiMenuAltRight } from "react-icons/bi";
 import { motion } from "framer-motion";
-import Drawers from "./Drawers";
+
+const Drawers = lazy(() => import("./Drawers"));
 
 function NavBar(props) {
   const [open, setOpen] = useState(false);
@@ -35,11 +36,15 @@ function NavBar(props) {
         }`}
       />
 
-      <Drawers
-        open={open}
-        onClose={closeDrawer}
-        onNavClick={props.onNavClick}
-      />
+      {open ? (
+        <Suspense fallback={null}>
+          <Drawers
+            open={open}
+            onClose={closeDrawer}
+            onNavClick={props.onNavClick}
+          />
+        </Suspense>
+      ) : null}
 
       <nav
         className={`z-30 fixed w-full transition-all duration-300 ${

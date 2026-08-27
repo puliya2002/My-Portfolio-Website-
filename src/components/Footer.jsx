@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLinks } from "../constants/index";
+import { NavLinks } from "../constants/nav";
 import { useNavigate } from "react-router-dom";
 import {
   FaGithub,
