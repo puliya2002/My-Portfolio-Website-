@@ -128,20 +128,20 @@ export function MouseLight() {
 
   return (
     <>
-      {/* Fixed ambient glow — top-left corner */}
+      {/* Fixed ambient blush — top-left corner */}
       <div
-        className="pointer-events-none fixed -top-20 -left-40 -z-10 h-[860px] w-[560px] rounded-full"
+        className="pointer-events-none fixed inset-0 z-0"
         style={{
           background:
-            "radial-gradient(circle, rgba(30, 58, 138, 0.18), transparent 70%)",
+            "radial-gradient(560px at 48px 40px, rgba(30, 58, 138, 0.22), transparent 72%)",
         }}
         aria-hidden
       />
       <div
-        className="pointer-events-none fixed top-0 left-0 -z-10 h-[760px] w-[760px] -translate-x-1/4 -translate-y-1/4 rounded-full"
+        className="pointer-events-none fixed inset-0 z-0"
         style={{
           background:
-            "radial-gradient(circle, rgba(3, 105, 161, 0.08), transparent 75%)",
+            "radial-gradient(720px at 20px 10px, rgba(3, 105, 161, 0.1), transparent 78%)",
         }}
         aria-hidden
       />

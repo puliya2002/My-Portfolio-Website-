@@ -7,12 +7,12 @@ export default function LoadingScreen({ exiting = false }) {
       aria-busy="true"
       aria-label="Loading"
     >
-      {/* Soft ambient glow */}
+      {/* Soft ambient blush — top-left */}
       <div
-        className="pointer-events-none absolute top-0 left-0 h-[480px] w-[480px] rounded-full"
+        className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(circle, rgba(30, 58, 138, 0.22), transparent 70%)",
+            "radial-gradient(480px at 40px 32px, rgba(30, 58, 138, 0.28), transparent 70%)",
         }}
         aria-hidden
       />

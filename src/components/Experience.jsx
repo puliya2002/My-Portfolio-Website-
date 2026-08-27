@@ -26,7 +26,7 @@ function Experience() {
       </motion.div>
 
       <motion.div
-        className="glass-card text-start p-6 sm:p-8"
+        className="glass-card glass-card--static text-start p-6 sm:p-8"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

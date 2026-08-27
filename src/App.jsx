@@ -105,39 +105,41 @@ function AppContent({ onNavClick }) {
         <>
           <MouseLight />
 
-          {showHome && (
-            <div
-              className={isProject ? "pointer-events-none select-none" : undefined}
-              aria-hidden={isProject}
-            >
-              <Home onNavClick={onNavClick} />
-              {!isProject && (
-                <Footer onNavClick={onNavClick} className="overflow-hidden" />
-              )}
-            </div>
-          )}
+          <div className="relative z-[1]">
+            {showHome && (
+              <div
+                className={isProject ? "pointer-events-none select-none" : undefined}
+                aria-hidden={isProject}
+              >
+                <Home onNavClick={onNavClick} />
+                {!isProject && (
+                  <Footer onNavClick={onNavClick} className="overflow-hidden" />
+                )}
+              </div>
+            )}
 
-          <Routes>
-            <Route path="/" element={null} />
-            <Route
-              path="/project/:slug"
-              element={
-                <div className="fixed inset-0 z-50 overflow-y-auto overscroll-y-contain bg-black">
+            <Routes>
+              <Route path="/" element={null} />
+              <Route
+                path="/project/:slug"
+                element={
+                  <div className="fixed inset-0 z-50 overflow-y-auto overscroll-y-contain bg-black">
+                    <Suspense fallback={null}>
+                      <ProjectPage />
+                    </Suspense>
+                  </div>
+                }
+              />
+              <Route
+                path="/contact"
+                element={
                   <Suspense fallback={null}>
-                    <ProjectPage />
+                    <ContactPage />
                   </Suspense>
-                </div>
-              }
-            />
-            <Route
-              path="/contact"
-              element={
-                <Suspense fallback={null}>
-                  <ContactPage />
-                </Suspense>
-              }
-            />
-          </Routes>
+                }
+              />
+            </Routes>
+          </div>
         </>
       ) : null}
     </>
