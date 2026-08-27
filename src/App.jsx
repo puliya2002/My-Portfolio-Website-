@@ -143,8 +143,9 @@ const App = () => {
   }, []);
 
   const handleNavClick = (section) => {
+    if (!section) return;
     setCurrentSection(section);
-    document.getElementById(section).scrollIntoView({ behavior: "smooth" });
+    document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
