@@ -38,7 +38,7 @@ function Footer(props) {
 
   return (
     <footer className="border-t border-white/[0.06] mt-16">
-      <div className="container max-w-7xl mx-auto px-6 py-12">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 py-12">
         {/* Top row */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-10">
           {/* Brand */}

@@ -80,46 +80,45 @@ function AppContent({ onNavClick }) {
         {routeLoading ? <LoadingScreen key="contact-loader" /> : null}
       </AnimatePresence>
 
-      <div
-        className={routeLoading ? "invisible pointer-events-none" : undefined}
-        aria-hidden={routeLoading}
-      >
-        <MouseLight />
+      {!routeLoading ? (
+        <>
+          <MouseLight />
 
-        {showHome && (
-          <div
-            className={isProject ? "pointer-events-none select-none" : undefined}
-            aria-hidden={isProject}
-          >
-            <Home onNavClick={onNavClick} />
-            {!isProject && (
-              <Footer onNavClick={onNavClick} className="overflow-hidden" />
-            )}
-          </div>
-        )}
+          {showHome && (
+            <div
+              className={isProject ? "pointer-events-none select-none" : undefined}
+              aria-hidden={isProject}
+            >
+              <Home onNavClick={onNavClick} />
+              {!isProject && (
+                <Footer onNavClick={onNavClick} className="overflow-hidden" />
+              )}
+            </div>
+          )}
 
-        <Routes>
-          <Route path="/" element={null} />
-          <Route
-            path="/project/:slug"
-            element={
-              <div className="fixed inset-0 z-50 overflow-y-auto overscroll-y-contain bg-black">
+          <Routes>
+            <Route path="/" element={null} />
+            <Route
+              path="/project/:slug"
+              element={
+                <div className="fixed inset-0 z-50 overflow-y-auto overscroll-y-contain bg-black">
+                  <Suspense fallback={null}>
+                    <ProjectPage />
+                  </Suspense>
+                </div>
+              }
+            />
+            <Route
+              path="/contact"
+              element={
                 <Suspense fallback={null}>
-                  <ProjectPage />
+                  <ContactPage />
                 </Suspense>
-              </div>
-            }
-          />
-          <Route
-            path="/contact"
-            element={
-              <Suspense fallback={null}>
-                <ContactPage />
-              </Suspense>
-            }
-          />
-        </Routes>
-      </div>
+              }
+            />
+          </Routes>
+        </>
+      ) : null}
     </>
   );
 }
@@ -173,12 +172,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <AnimatePresence>{isLoading ? <LoadingScreen key="loader" /> : null}</AnimatePresence>
-      <div
-        className={isLoading ? "invisible pointer-events-none" : undefined}
-        aria-hidden={isLoading}
-      >
-        <AppContent onNavClick={handleNavClick} />
-      </div>
+      {!isLoading ? <AppContent onNavClick={handleNavClick} /> : null}
     </BrowserRouter>
   );
 };

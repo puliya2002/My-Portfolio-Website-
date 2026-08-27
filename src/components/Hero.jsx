@@ -13,18 +13,18 @@ import { FiArrowDownRight, FiArrowUpRight } from "react-icons/fi";
 import { Loader2, Star } from "lucide-react";
 
 const springAnimation = {
-  initial: { scale: 0.96, y: 10, opacity: 0 },
+  initial: { scale: 0.92, y: 18, opacity: 0 },
   animate: {
     scale: 1,
     y: 0,
     opacity: 1,
-    transition: { type: "spring", mass: 0.8, stiffness: 320, damping: 28 },
+    transition: { type: "spring", mass: 1, stiffness: 280, damping: 28 },
   },
 };
 
 const fadeLeft = {
-  initial: { opacity: 0, y: -16 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+  initial: { opacity: 0, y: -40 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
 };
 
 const FIVERR_RATING = 4.9;
@@ -32,8 +32,8 @@ const FIVERR_REVIEWS = 429;
 const FIVERR_STAR_FRACTION = FIVERR_RATING % 1;
 
 const fadeUp = {
-  initial: { opacity: 0, y: 10 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.4, delay: 0.05 } },
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.65, delay: 0.1 } },
 };
 
 const socialLinks = [
@@ -99,7 +99,7 @@ const Hero = () => {
       {/* Ambient background blobs */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-blue-600/8 blur-[120px] max-md:blur-[80px] max-md:w-[320px] max-md:h-[320px]" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-cyan-500/5 blur-[100px] max-md:hidden" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-cyan-500/5 blur-[100px] max-md:blur-[70px] max-md:w-[260px] max-md:h-[260px]" />
       </div>
 
       <div className="d-container z-10 w-full">
@@ -127,7 +127,7 @@ const Hero = () => {
           className="grid grid-cols-1 sm:grid-cols-3 gap-3"
           initial="initial"
           animate="animate"
-          transition={{ staggerChildren: 0.04 }}
+          transition={{ staggerChildren: 0.07 }}
         >
           {/* Profile photo */}
           <motion.div

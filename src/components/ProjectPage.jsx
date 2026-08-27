@@ -119,7 +119,7 @@ const ProjectPage = () => {
 
       <NavBar />
 
-      <div className="container max-w-3xl mx-auto px-5 pt-28 pb-20 relative z-10">
+      <div className="container max-w-3xl mx-auto px-4 sm:px-5 pt-28 pb-20 relative z-10">
         {/* Back button */}
         <motion.button
           initial={{ opacity: 0, x: -12 }}
@@ -137,7 +137,7 @@ const ProjectPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="glass-card glass-card--static p-6 sm:p-8"
+          className="glass-card glass-card--static p-4 sm:p-6"
         >
           {/* Header */}
           <div className="mb-6">

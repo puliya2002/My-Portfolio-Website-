@@ -76,7 +76,7 @@ function ContactPage() {
 
       <NavBar />
 
-      <div className="container max-w-2xl mx-auto px-5 pt-32 pb-20 relative z-10">
+      <div className="container max-w-2xl mx-auto px-4 sm:px-5 pt-32 pb-20 relative z-10">
         {/* Header */}
         <motion.div
           className="text-center mb-12"

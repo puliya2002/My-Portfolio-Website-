@@ -55,7 +55,7 @@ function NavBar(props) {
             : "bg-transparent border-b border-transparent"
         }`}
       >
-        <div className="container max-w-screen-xl flex items-center justify-between mx-auto px-5 ">
+        <div className="container max-w-screen-xl flex items-center justify-between mx-auto px-4 sm:px-5">
           {/* Logo */}
           <a href="/" className="flex items-center gap-2 group">
             <p className="text-[17px] font-semibold text-white/90 group-hover:text-white transition-colors duration-200">
