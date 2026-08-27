@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ProjectList } from "../constants";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
@@ -17,76 +17,19 @@ const formatSlugLabel = (slug) =>
 /** Projects that should use a static screenshot instead of an embedded site */
 const IFRAME_PREVIEW_EXCLUDED_SLUGS = new Set(["money-track"]);
 
-const FETCH_TIMEOUT_MS = 10000;
-
 function validateHttpUrl(string) {
   try {
     const u = new URL(string);
-    if (u.protocol !== "http:" && u.protocol !== "https:") return false;
-    if (
-      typeof window !== "undefined" &&
-      window.location?.protocol === "https:" &&
-      u.protocol === "http:"
-    ) {
-      return false;
-    }
-    return true;
+    return u.protocol === "http:" || u.protocol === "https:";
   } catch {
     return false;
   }
-}
-
-/**
- * Best-effort reachability: `no-cors` cannot read status, but the promise
- * rejects on real network/DNS failures. Timeouts are treated as reachable (fail-open).
- */
-function useUrlReachable(url) {
-  const [ok, setOk] = useState(null);
-
-  useEffect(() => {
-    const raw = url?.trim();
-    if (!raw) {
-      setOk(null);
-      return;
-    }
-    if (!validateHttpUrl(raw)) {
-      setOk(false);
-      return;
-    }
-
-    let cancelled = false;
-    setOk(null);
-    const ac = new AbortController();
-    const tid = window.setTimeout(() => ac.abort(), FETCH_TIMEOUT_MS);
-
-    fetch(raw, { method: "GET", mode: "no-cors", signal: ac.signal })
-      .then(() => {
-        if (!cancelled) setOk(true);
-      })
-      .catch((e) => {
-        if (cancelled) return;
-        if (e?.name === "AbortError") setOk(true);
-        else setOk(false);
-      })
-      .finally(() => window.clearTimeout(tid));
-
-    return () => {
-      cancelled = true;
-      ac.abort();
-      window.clearTimeout(tid);
-    };
-  }, [url]);
-
-  return ok;
 }
 
 const ProjectPage = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const project = ProjectList.find((proj) => proj.slug === slug);
-
-  const webUrlOk = useUrlReachable(project?.weburl);
-  const gitUrlOk = useUrlReachable(project?.giturl);
 
   if (!project) {
     return (
@@ -104,8 +47,10 @@ const ProjectPage = () => {
     );
   }
 
-  const showWeb = Boolean(project.weburl?.trim()) && webUrlOk !== false;
-  const showGit = Boolean(project.giturl?.trim()) && gitUrlOk !== false;
+  const showWeb =
+    Boolean(project.weburl?.trim()) && validateHttpUrl(project.weburl.trim());
+  const showGit =
+    Boolean(project.giturl?.trim()) && validateHttpUrl(project.giturl.trim());
   const useIframePreview =
     showWeb && !IFRAME_PREVIEW_EXCLUDED_SLUGS.has(project.slug);
   const screenshotSrc = project.ss;
@@ -151,7 +96,7 @@ const ProjectPage = () => {
               {project.title}
             </h1>
 
-            {/* Action links (hidden when URL fails validation or network check) */}
+            {/* Action links */}
             <div className="flex flex-wrap gap-2">
               {showGit && (
                 <a
