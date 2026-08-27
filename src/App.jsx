@@ -2,7 +2,6 @@ import React, { useState, useLayoutEffect, useRef, useEffect, lazy, Suspense } f
 import Home from "./components/Home.jsx";
 import Footer from "./components/Footer.jsx";
 import { Route, Routes, BrowserRouter, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
 import { MouseLight } from "./components/MouseMove.jsx";
 import LoadingScreen from "./components/LoadingScreen.jsx";
 
@@ -13,6 +12,7 @@ const SCROLL_STORAGE_KEY = "portfolio:homeScrollY";
 const MIN_LOADER_MS = 400;
 const MAX_LOADER_MS = 900;
 const CONTACT_LOADER_MS = 550;
+const LOADER_EXIT_MS = 450;
 
 function readSavedScrollY() {
   const raw = sessionStorage.getItem(SCROLL_STORAGE_KEY);
@@ -44,8 +44,10 @@ function AppContent({ onNavClick }) {
   const isContact = pathname === "/contact";
   const showHome = !isContact;
   const savedScrollY = useRef(0);
-  const [routeLoading, setRouteLoading] = useState(false);
   const prevPathRef = useRef(pathname);
+  const [routeLoading, setRouteLoading] = useState(false);
+  const [routeExiting, setRouteExiting] = useState(false);
+  const routeTimers = useRef([]);
 
   useLayoutEffect(() => {
     if (!isProject) return undefined;
@@ -69,18 +71,37 @@ function AppContent({ onNavClick }) {
 
     if (pathname !== "/contact" || prev === "/contact") return undefined;
 
+    routeTimers.current.forEach((id) => window.clearTimeout(id));
+    routeTimers.current = [];
+
+    setRouteExiting(false);
     setRouteLoading(true);
-    const timer = window.setTimeout(() => setRouteLoading(false), CONTACT_LOADER_MS);
-    return () => window.clearTimeout(timer);
+
+    const exitId = window.setTimeout(() => {
+      setRouteExiting(true);
+      const hideId = window.setTimeout(() => {
+        setRouteLoading(false);
+        setRouteExiting(false);
+      }, LOADER_EXIT_MS);
+      routeTimers.current.push(hideId);
+    }, CONTACT_LOADER_MS);
+
+    routeTimers.current.push(exitId);
+
+    return () => {
+      routeTimers.current.forEach((id) => window.clearTimeout(id));
+      routeTimers.current = [];
+    };
   }, [pathname]);
+
+  const showRouteLoader = routeLoading;
+  const showContent = !routeLoading || routeExiting;
 
   return (
     <>
-      <AnimatePresence>
-        {routeLoading ? <LoadingScreen key="contact-loader" /> : null}
-      </AnimatePresence>
+      {showRouteLoader ? <LoadingScreen exiting={routeExiting} /> : null}
 
-      {!routeLoading ? (
+      {showContent ? (
         <>
           <MouseLight />
 
@@ -125,7 +146,9 @@ function AppContent({ onNavClick }) {
 
 const App = () => {
   const [currentSection, setCurrentSection] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [showLoader, setShowLoader] = useState(true);
+  const [loaderExiting, setLoaderExiting] = useState(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const boot = document.getElementById("boot-loader");
@@ -137,14 +160,21 @@ const App = () => {
     const started = performance.now();
     let cancelled = false;
     let finished = false;
+    let exitTimer;
+    let hideTimer;
 
     const finish = () => {
       if (cancelled || finished) return;
       finished = true;
       const elapsed = performance.now() - started;
       const wait = Math.max(0, MIN_LOADER_MS - elapsed);
-      window.setTimeout(() => {
-        if (!cancelled) setIsLoading(false);
+      exitTimer = window.setTimeout(() => {
+        if (cancelled) return;
+        setLoaderExiting(true);
+        setReady(true);
+        hideTimer = window.setTimeout(() => {
+          if (!cancelled) setShowLoader(false);
+        }, LOADER_EXIT_MS);
       }, wait);
     };
 
@@ -161,6 +191,8 @@ const App = () => {
     return () => {
       cancelled = true;
       window.clearTimeout(fallback);
+      window.clearTimeout(exitTimer);
+      window.clearTimeout(hideTimer);
     };
   }, []);
 
@@ -172,8 +204,8 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <AnimatePresence>{isLoading ? <LoadingScreen key="loader" /> : null}</AnimatePresence>
-      {!isLoading ? <AppContent onNavClick={handleNavClick} /> : null}
+      {showLoader ? <LoadingScreen exiting={loaderExiting} /> : null}
+      {ready ? <AppContent onNavClick={handleNavClick} /> : null}
     </BrowserRouter>
   );
 };

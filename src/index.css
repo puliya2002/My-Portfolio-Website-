@@ -331,3 +331,62 @@ body {
     transform: translateX(60%);
   }
 }
+
+/* ── Loading screen (CSS-only, no framer-motion) ── */
+@keyframes loader-pop {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.55);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes loader-label-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loader-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes loader-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-loader-pop {
+  animation: loader-pop 0.7s cubic-bezier(0.34, 1.45, 0.64, 1) both;
+}
+
+.animate-loader-label {
+  animation: loader-label-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+.animate-loader-progress {
+  transform-origin: left center;
+  animation: loader-progress 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.animate-loader-exit {
+  animation: loader-fade-out 0.45s ease-in-out both;
+  pointer-events: none;
+}
