@@ -29,16 +29,16 @@ import NutsSS from "../assets/natsislandss.webp";
 import Shilohstempl from "../assets/shilohstempl.webp";
 import ShilohstemplSS from "../assets/shilohstemple.webp";
 
-import StoreAndSnore from "../assets/new_mockups/storeandsnore.jpg";
-import PlanItPerfect from "../assets/new_mockups/planitperfect.jpg";
-import SovereignTrust from "../assets/new_mockups/sovereign_trust.jpg";
-import PortfolioLink from "../assets/new_mockups/portfoliolink.jpg";
-import StoreAndSnoreNashville from "../assets/new_mockups/storeandsnore_nashville.jpg";
-import LadyLuckNew from "../assets/new_mockups/ladyluck.jpg";
-import LadyBudzNew from "../assets/new_mockups/ladybudz.jpg";
-import SeenNew from "../assets/new_mockups/seen.jpg";
-import SeenTn from "../assets/new_mockups/seentn.jpg";
-import App from "../assets/new_mockups/app.jpg";
+import StoreAndSnore from "../assets/new_mockups/storeandsnore.webp";
+import PlanItPerfect from "../assets/new_mockups/planitperfect.webp";
+import SovereignTrust from "../assets/new_mockups/sovereign_trust.webp";
+import PortfolioLink from "../assets/new_mockups/portfoliolink.webp";
+import StoreAndSnoreNashville from "../assets/new_mockups/storeandsnore_nashville.webp";
+import LadyLuckNew from "../assets/new_mockups/ladyluck.webp";
+import LadyBudzNew from "../assets/new_mockups/ladybudz.webp";
+import SeenNew from "../assets/new_mockups/seen.webp";
+import SeenTn from "../assets/new_mockups/seentn.webp";
+import App from "../assets/new_mockups/app.webp";
 
 export const ProjectList = [
   {

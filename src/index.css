@@ -322,3 +322,12 @@ body {
 .pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
 }
+
+@keyframes contact-shimmer {
+  0% {
+    transform: translateX(-60%);
+  }
+  100% {
+    transform: translateX(60%);
+  }
+}

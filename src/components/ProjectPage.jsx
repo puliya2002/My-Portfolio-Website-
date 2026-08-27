@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { ProjectList } from "../constants";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { FiArrowLeft } from "react-icons/fi";
-import { motion } from "framer-motion";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import NavBar from "./NavBar";
@@ -64,26 +63,18 @@ const ProjectPage = () => {
 
       <NavBar />
 
-      <div className="container max-w-3xl mx-auto px-4 sm:px-5 pt-28 pb-20 relative z-10">
+      <div className="container max-w-3xl mx-auto px-4 sm:px-5 pt-20 pb-20 relative z-10">
         {/* Back button */}
-        <motion.button
-          initial={{ opacity: 0, x: -12 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.4 }}
+        <button
           onClick={() => navigate("/")}
           className="flex items-center gap-2 text-sm text-gray-400 hover:text-white
-                     mb-8 group transition-colors duration-200"
+                     mb-4 group transition-colors duration-200"
         >
           <FiArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform duration-200" />
           Back to projects
-        </motion.button>
+        </button>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="glass-card glass-card--static p-4 sm:p-6"
-        >
+        <div className="glass-card glass-card--static p-4 sm:p-6 pt-10 sm:pt-10 ">
           {/* Header */}
           <div className="mb-6">
             <p className="text-xs font-semibold tracking-[0.2em] text-blue-400 uppercase mb-2">
@@ -91,7 +82,7 @@ const ProjectPage = () => {
             </p>
             <h1
               className="max-w-full text-4xl font-bold leading-tight text-white text-balance break-words
-                         xs:text-5xl xs:leading-snug sm:text-5xl sm:leading-tight mb-4"
+                         xs:text-3xl xs:leading-snug sm:text-4xl sm:leading-tight mb-4"
             >
               {project.title}
             </h1>
@@ -218,7 +209,7 @@ const ProjectPage = () => {
               )}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
