@@ -3,36 +3,43 @@ import { ProjectList } from "../constants/index";
 import ProjectCard from "./ProjectCard";
 import { motion } from "framer-motion";
 
-function Projects() {
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 },
-  };
+const cardVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
 
+function Projects() {
   return (
     <div className="d-container">
+      {/* Section header */}
       <motion.div
-        initial="hidden"
-        whileInView="visible"
+        className="flex flex-col items-start mb-8"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        variants={fadeInUp}
-        transition={{ duration: 0.6, delay: 0.05 }}
+        transition={{ duration: 0.6 }}
       >
-        <h2 className="pb-7">Projects</h2>
+        <p className="text-xs font-semibold tracking-[0.2em] text-blue-400 uppercase mb-3">
+          Selected Work
+        </p>
+        <h2 className="text-start mb-3">Projects</h2>
+        <div className="section-divider" />
       </motion.div>
 
-      <div className="grid grid-col-1 sm:grid-cols-2 gap-3">
-        {ProjectList.map((item) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {ProjectList.map((item, index) => (
           <motion.div
-            key={item.id}
+            key={item.slug}
+            data-project-slug={item.slug}
+            className="min-w-0 scroll-mt-24"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            transition={{ duration: 0.6, delay: item.id * 0.05 }}
+            viewport={{ once: true, amount: 0.15 }}
+            variants={cardVariants}
+            transition={{ duration: 0.5, delay: (index % 4) * 0.08 }}
           >
             <ProjectCard
-              id={item.id}
+              slug={item.slug}
               name={item.title}
               image={item.image}
               skills={item.skills}

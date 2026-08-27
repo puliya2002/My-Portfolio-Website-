@@ -15,18 +15,21 @@
   -webkit-text-size-adjust: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 .scrollbar-hidden::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
+  display: none;
 }
 
 .scrollbar-hidden {
-  -ms-overflow-style: none; /* Internet Explorer and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 h1 {
-  @apply text-6xl font-poppins font-semibold !important;
+  @apply font-poppins font-semibold;
 }
 
 h2 {
@@ -37,51 +40,261 @@ body {
   @apply overflow-x-hidden;
 }
 
-.d-container{
-  @apply container max-w-6xl mx-auto p-6 text-center pt-14 sm:pt-14 ;
+[data-project-slug] {
+  scroll-margin-top: 6rem;
+}
+
+.d-container {
+  @apply container max-w-7xl mx-auto p-6 text-center pt-14 sm:pt-14;
+}
+
+/* Shared natural-light gradient border for cards */
+.glass-card,
+.hero-card,
+.project-card {
+  position: relative;
+  isolation: isolate;
+  border: 1px solid transparent;
+}
+
+.glass-card::before,
+.hero-card::before,
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    140deg,
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(148, 163, 184, 0.16) 32%,
+    rgba(59, 130, 246, 0.15) 70%,
+    rgba(34, 211, 238, 0.08) 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.88;
+  transition: opacity 300ms ease, background 300ms ease;
+}
+
+.glass-card:hover::before,
+.hero-card:hover::before,
+.project-card:hover::before {
+  background: linear-gradient(
+    140deg,
+    rgba(255, 255, 255, 0.28) 0%,
+    rgba(191, 219, 254, 0.22) 35%,
+    rgba(96, 165, 250, 0.24) 70%,
+    rgba(34, 211, 238, 0.14) 100%
+  );
+  opacity: 1;
+}
+
+/* ── Glass card base ── */
+.glass-card {
+  @apply bg-white/[0.06] backdrop-blur-md rounded-2xl
+         shadow-[0_2px_20px_rgba(0,0,0,0.35)]
+         transition-all duration-300 ease-out;
+}
+
+.glass-card:hover {
+  @apply bg-blue-500/10 shadow-[0_4px_28px_rgba(0,0,0,0.45)];
 }
 
 .navbar-card {
-  @apply 
-  hover:bg-gradient-to-br hover:from-gray-700/20 hover:to-gray-500/30
- 
-  transition duration-300 ease-in-out
-  
-
- 
+  @apply hover:bg-white/[0.07] transition duration-300 ease-in-out rounded-lg;
 }
 
+/* ── Hero bento cards ── */
 .hero-card {
-  @apply justify-center items-center flex flex-col 
-  bg-gradient-to-br from-gray-500/30 to-gray-500/20
-border-white/5 border-2 rounded-xl shadow
-  hover:bg-gradient-to-br hover:from-gray-700/20 hover:to-gray-500/30
- 
-  transition duration-300 ease-in-out
-  
-
- 
+  @apply justify-center items-center flex flex-col
+         bg-white/[0.06] backdrop-blur-md
+         rounded-2xl sm:max-md:rounded-xl md:rounded-2xl
+         shadow-[0_2px_16px_rgba(0,0,0,0.30)]
+         hover:bg-white/[0.09]
+         hover:shadow-[0_4px_24px_rgba(0,0,0,0.40)]
+         transition-all duration-300 ease-out;
 }
 
+.hero-card--static:hover {
+  background-color: rgb(255 255 255 / 0.06);
+}
+
+/* ── Border beam (traveling light on card edge) ── */
+.border-beam {
+  --beam-size: 68px;
+  --beam-radius: 16px;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 4;
+  border: 1.5px solid transparent;
+  mask-clip: padding-box, border-box;
+  mask-composite: intersect;
+  -webkit-mask-clip: padding-box, border-box;
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(transparent, transparent), linear-gradient(#fff, #fff);
+  -webkit-mask-image: linear-gradient(transparent, transparent),
+    linear-gradient(#fff, #fff);
+}
+
+.border-beam::after {
+  content: "";
+  position: absolute;
+  width: var(--beam-size);
+  aspect-ratio: 1;
+  background: linear-gradient(
+    to left,
+    rgb(59, 130, 246),
+    rgb(186, 230, 253),
+    transparent
+  );
+  offset-path: rect(0 auto auto 0 round var(--beam-radius));
+  offset-anchor: 90% 50%;
+  animation: border-beam-travel var(--beam-duration, 9s) linear infinite;
+  animation-delay: var(--beam-delay, 0s);
+  will-change: offset-distance;
+}
+
+@keyframes border-beam-travel {
+  to {
+    offset-distance: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .border-beam {
+    --beam-radius: 12px;
+    --beam-size: 52px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .border-beam::after {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* ── Project card ── */
 .project-card {
-  @apply justify-start items-start flex flex-col text-start p-3
-  bg-gradient-to-br from-gray-500/30 to-gray-500/20
-border-white/5 border-2 rounded-xl shadow
-  hover:bg-gradient-to-br hover:from-gray-700/20 hover:to-gray-500/30
- 
-  transition duration-300 ease-in-out
-  
-
- 
+  @apply justify-start items-start flex flex-col text-start p-4
+         bg-white/[0.06] backdrop-blur-md rounded-2xl
+         shadow-[0_2px_16px_rgba(0,0,0,0.30)]
+         hover:bg-white/[0.09]
+         hover:shadow-[0_4px_24px_rgba(0,0,0,0.40)]
+         transition-all duration-300 ease-out;
 }
 
-.click{
-  @apply 
-  bg-gradient-to-br from-blue-500/60  to-gray-700/10 to-gray-700/10
- 
-  hover:bg-gradient-to-br hover:from-blue-500/30 hover:to-blue-500/50
-  hover:border-gray-700 hover:shadow-lg
-  transition duration-300 ease-in-out
-  
+/* ── CTA accent card ── */
+.click {
+  @apply bg-gradient-to-br from-blue-500/35 to-blue-800/20
+         shadow-[0_8px_24px_rgba(59,130,246,0.18)]
+         hover:from-blue-400/50 hover:to-blue-700/30
+         hover:shadow-[0_10px_32px_rgba(59,130,246,0.32)]
+         transition-all duration-300 ease-out;
+  background-color: rgba(59, 130, 246, 0.12);
 }
 
+.click:hover {
+  background-color: rgba(59, 130, 246, 0.22);
+}
+
+.click::before {
+  background: linear-gradient(
+    140deg,
+    rgba(147, 197, 253, 0.34) 0%,
+    rgba(96, 165, 250, 0.3) 45%,
+    rgba(56, 189, 248, 0.28) 100%
+  );
+  transition: background 300ms ease, opacity 300ms ease;
+}
+
+.click:hover::before {
+  background: linear-gradient(
+    140deg,
+    rgba(191, 219, 254, 0.55) 0%,
+    rgba(96, 165, 250, 0.48) 45%,
+    rgba(34, 211, 238, 0.4) 100%
+  );
+  opacity: 1;
+}
+
+/* ── Text gradient ── */
+.text-gradient {
+  @apply bg-gradient-to-r from-white via-blue-200 to-blue-400
+         bg-clip-text text-transparent;
+}
+
+.text-gradient-blue {
+  @apply bg-gradient-to-r from-blue-400 to-cyan-400
+         bg-clip-text text-transparent;
+}
+
+/* ── Glow effects ── */
+.glow-blue {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+.glow-border {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.1), inset 0 0 15px rgba(59, 130, 246, 0.03);
+}
+
+/* ── Section divider ── */
+.section-divider {
+  @apply w-12 h-[2px] bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full;
+}
+
+/* ── Skill tag ── */
+.skill-tag {
+  @apply h-min w-auto bg-white/[0.05] border border-white/[0.10]
+         rounded-lg px-2 py-[3px] text-gray-300
+         hover:bg-blue-500/10 hover:border-blue-400/30
+         transition-all duration-200;
+}
+
+/* Tighter pills on project cards so more skills fit one row */
+.skill-tag.skill-tag--compact {
+  @apply rounded-md px-[7px] py-0.5 text-[12px] leading-snug tracking-normal
+         border-white/[0.09];
+}
+
+/* ── Nav link hover ── */
+.nav-link {
+  @apply relative text-gray-300 hover:text-white transition-colors duration-200
+         after:absolute after:left-0 after:bottom-[-2px] after:h-[1px] after:w-0
+         after:bg-blue-400 after:transition-all after:duration-300
+         hover:after:w-full;
+}
+
+/* ── Scrolling noise overlay (very subtle) ── */
+@keyframes noise-move {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(-10%, -10%); }
+}
+
+/* ── Fade up animation ── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out both;
+}
+
+/* ── Pulse glow ── */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(59, 130, 246, 0.2); }
+  50%       { box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}

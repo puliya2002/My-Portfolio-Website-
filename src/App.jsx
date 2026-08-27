@@ -1,13 +1,91 @@
-import React, { useState } from "react";
-import Hero from "./components/Hero.jsx";
-import NavBar from "./components/NavBar.jsx";
-import AboutMe from "./components/AboutMe.jsx";
-import Projects from "./components/Projects.jsx";
-import { motion } from "framer-motion";
+import React, { useState, useLayoutEffect, useRef } from "react";
+import Home from "./components/Home.jsx";
 import Footer from "./components/Footer.jsx";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
-import PrjectPage from "./components/ProjectPage.jsx";
-import ContctPage from "./components/ContctPage.jsx";
+import { Route, Routes, BrowserRouter, useLocation } from "react-router-dom";
+import { MouseLight } from "./components/MouseMove.jsx";
+import ProjectPage from "./components/ProjectPage.jsx";
+import ContactPage from "./components/ContctPage.jsx";
+
+const SCROLL_STORAGE_KEY = "portfolio:homeScrollY";
+
+function readSavedScrollY() {
+  const raw = sessionStorage.getItem(SCROLL_STORAGE_KEY);
+  if (raw == null) return window.scrollY;
+  const y = Number(raw);
+  return Number.isFinite(y) ? y : window.scrollY;
+}
+
+function lockPageScroll(scrollY) {
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${scrollY}px`;
+  document.body.style.left = "0";
+  document.body.style.right = "0";
+  document.body.style.width = "100%";
+}
+
+function unlockPageScroll(scrollY) {
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.left = "";
+  document.body.style.right = "";
+  document.body.style.width = "";
+  window.scrollTo({ top: scrollY, left: 0, behavior: "auto" });
+}
+
+function AppContent({ onNavClick }) {
+  const { pathname } = useLocation();
+  const isProject = pathname.startsWith("/project/");
+  const isContact = pathname === "/contact";
+  const showHome = !isContact;
+  const savedScrollY = useRef(0);
+
+  useLayoutEffect(() => {
+    if (!isProject) return undefined;
+
+    const scrollY = readSavedScrollY();
+    savedScrollY.current = scrollY;
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+    lockPageScroll(scrollY);
+
+    return () => {
+      unlockPageScroll(savedScrollY.current);
+      sessionStorage.removeItem(SCROLL_STORAGE_KEY);
+    };
+  }, [isProject]);
+
+  return (
+    <>
+      <MouseLight />
+
+      {showHome && (
+        <div
+          className={isProject ? "pointer-events-none select-none" : undefined}
+          aria-hidden={isProject}
+        >
+          <Home onNavClick={onNavClick} />
+          {!isProject && (
+            <Footer onNavClick={onNavClick} className="overflow-hidden" />
+          )}
+        </div>
+      )}
+
+      <Routes>
+        <Route path="/" element={null} />
+        <Route
+          path="/project/:slug"
+          element={
+            <div className="fixed inset-0 z-50 overflow-y-auto overscroll-y-contain bg-black">
+              <ProjectPage />
+            </div>
+          }
+        />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
+    </>
+  );
+}
 
 const App = () => {
   const [currentSection, setCurrentSection] = useState("");
@@ -19,53 +97,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div>
-      
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <NavBar onNavClick={handleNavClick} />
-                <section id="hero" className="overflow-hidden">
-                  <Hero />
-                </section>
-                <section id="about" className="overflow-hidden">
-                  <AboutMe />
-                </section>
-                <section id="projects" className="overflow-hidden">
-                  <Projects />
-                </section>
-                {/* <div className="overflow-hidden ">
-                  <motion.div
-                    className="absolute z-0 w-[65%] sm:w-[35%] h-[100%] sm:h-[50%] top-0 left-0 bg-gradient-to-bl from-blue-500/90 to-blue-900/40 rounded-full blur-[150px]"
-                    animate={{ x: ["-20%", "200%", "-20%"] }}
-                    transition={{
-                      duration: 20,
-                      ease: "linear",
-                      repeat: Infinity,
-                    }}
-                  />
-                </div> */}
-                {/* <div className=" overflow-hidden">
-                  <motion.div
-                    className="absolute z-0 w-[65%] sm:w-[35%] h-[100%] sm:h-[50%] bottom-[-220%] sm:bottom-[-50%] left-0 bg-gradient-to-bl from-blue-500/50 to-blue-900/40 rounded-full blur-[200px] "
-                    animate={{ x: ["200%", "-20%", "200%"] }}
-                    transition={{
-                      duration: 20,
-                      ease: "linear",
-                      repeat: Infinity,
-                    }}
-                  />
-                </div> */}
-              </>
-            }
-          />
-          <Route path="/project/:id" element={<PrjectPage />} />
-          <Route path="/contact" element={<ContctPage />} />
-        </Routes>
-        <Footer onNavClick={handleNavClick} className="overflow-hidden" />
-      </div>
+      <AppContent onNavClick={handleNavClick} />
     </BrowserRouter>
   );
 };
