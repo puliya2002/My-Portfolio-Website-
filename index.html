@@ -5,8 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="logo2.png" />
     <title>Pulindu Vidmal Kodithuwakku</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #000;
+        color: #fff;
+      }
+      #boot-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #000;
+        transition: opacity 0.35s ease;
+      }
+      #boot-loader.is-hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      #boot-loader .boot-bar {
+        width: 112px;
+        height: 2px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        animation: boot-spring 1.1s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
+      #boot-loader .boot-bar::after {
+        content: "";
+        display: block;
+        height: 100%;
+        width: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #60a5fa, #22d3ee);
+        transform-origin: left center;
+        animation: boot-fill 1.1s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+      }
+      @keyframes boot-spring {
+        from {
+          opacity: 0;
+          transform: scale(0.55) translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+      @keyframes boot-fill {
+        from {
+          transform: scaleX(0);
+        }
+        to {
+          transform: scaleX(1);
+        }
+      }
+    </style>
   </head>
   <body>
+    <div id="boot-loader" aria-busy="true" aria-label="Loading">
+      <div class="boot-bar"></div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

@@ -1,10 +1,12 @@
-import React, { useState, useLayoutEffect, useRef } from "react";
+import React, { useState, useLayoutEffect, useRef, useEffect } from "react";
 import Home from "./components/Home.jsx";
 import Footer from "./components/Footer.jsx";
 import { Route, Routes, BrowserRouter, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import { MouseLight } from "./components/MouseMove.jsx";
 import ProjectPage from "./components/ProjectPage.jsx";
 import ContactPage from "./components/ContctPage.jsx";
+import LoadingScreen from "./components/LoadingScreen.jsx";
 
 const SCROLL_STORAGE_KEY = "portfolio:homeScrollY";
 
@@ -38,6 +40,8 @@ function AppContent({ onNavClick }) {
   const isContact = pathname === "/contact";
   const showHome = !isContact;
   const savedScrollY = useRef(0);
+  const [routeLoading, setRouteLoading] = useState(false);
+  const prevPathRef = useRef(pathname);
 
   useLayoutEffect(() => {
     if (!isProject) return undefined;
@@ -55,40 +59,99 @@ function AppContent({ onNavClick }) {
     };
   }, [isProject]);
 
+  useEffect(() => {
+    const prev = prevPathRef.current;
+    prevPathRef.current = pathname;
+
+    // Show loader when entering the contact page
+    if (pathname !== "/contact" || prev === "/contact") return undefined;
+
+    setRouteLoading(true);
+    const timer = window.setTimeout(() => setRouteLoading(false), MIN_LOADER_MS);
+    return () => window.clearTimeout(timer);
+  }, [pathname]);
+
   return (
     <>
-      <MouseLight />
+      <AnimatePresence>
+        {routeLoading ? <LoadingScreen key="contact-loader" /> : null}
+      </AnimatePresence>
 
-      {showHome && (
-        <div
-          className={isProject ? "pointer-events-none select-none" : undefined}
-          aria-hidden={isProject}
-        >
-          <Home onNavClick={onNavClick} />
-          {!isProject && (
-            <Footer onNavClick={onNavClick} className="overflow-hidden" />
-          )}
-        </div>
-      )}
+      <div
+        className={routeLoading ? "invisible pointer-events-none" : undefined}
+        aria-hidden={routeLoading}
+      >
+        <MouseLight />
 
-      <Routes>
-        <Route path="/" element={null} />
-        <Route
-          path="/project/:slug"
-          element={
-            <div className="fixed inset-0 z-50 overflow-y-auto overscroll-y-contain bg-black">
-              <ProjectPage />
-            </div>
-          }
-        />
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
+        {showHome && (
+          <div
+            className={isProject ? "pointer-events-none select-none" : undefined}
+            aria-hidden={isProject}
+          >
+            <Home onNavClick={onNavClick} />
+            {!isProject && (
+              <Footer onNavClick={onNavClick} className="overflow-hidden" />
+            )}
+          </div>
+        )}
+
+        <Routes>
+          <Route path="/" element={null} />
+          <Route
+            path="/project/:slug"
+            element={
+              <div className="fixed inset-0 z-50 overflow-y-auto overscroll-y-contain bg-black">
+                <ProjectPage />
+              </div>
+            }
+          />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+      </div>
     </>
   );
 }
 
+const MIN_LOADER_MS = 1100;
+
 const App = () => {
   const [currentSection, setCurrentSection] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const boot = document.getElementById("boot-loader");
+    if (boot) {
+      boot.classList.add("is-hidden");
+      window.setTimeout(() => boot.remove(), 400);
+    }
+
+    const started = performance.now();
+    let cancelled = false;
+
+    const finish = () => {
+      if (cancelled) return;
+      const elapsed = performance.now() - started;
+      const wait = Math.max(0, MIN_LOADER_MS - elapsed);
+      window.setTimeout(() => {
+        if (!cancelled) setIsLoading(false);
+      }, wait);
+    };
+
+    if (document.readyState === "complete") {
+      finish();
+    } else {
+      window.addEventListener("load", finish, { once: true });
+    }
+
+    // Fallback if load is slow / stuck
+    const fallback = window.setTimeout(finish, 2200);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(fallback);
+      window.removeEventListener("load", finish);
+    };
+  }, []);
 
   const handleNavClick = (section) => {
     setCurrentSection(section);
@@ -97,7 +160,13 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <AppContent onNavClick={handleNavClick} />
+      <AnimatePresence>{isLoading ? <LoadingScreen key="loader" /> : null}</AnimatePresence>
+      <div
+        className={isLoading ? "invisible pointer-events-none" : undefined}
+        aria-hidden={isLoading}
+      >
+        <AppContent onNavClick={handleNavClick} />
+      </div>
     </BrowserRouter>
   );
 };
