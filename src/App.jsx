@@ -10,8 +10,8 @@ const ProjectPage = lazy(() => import("./components/ProjectPage.jsx"));
 const ContactPage = lazy(() => import("./components/ContctPage.jsx"));
 
 const SCROLL_STORAGE_KEY = "portfolio:homeScrollY";
-const MIN_LOADER_MS = 700;
-const MAX_LOADER_MS = 1400;
+const MIN_LOADER_MS = 400;
+const MAX_LOADER_MS = 900;
 
 function readSavedScrollY() {
   const raw = sessionStorage.getItem(SCROLL_STORAGE_KEY);
@@ -43,8 +43,6 @@ function AppContent({ onNavClick }) {
   const isContact = pathname === "/contact";
   const showHome = !isContact;
   const savedScrollY = useRef(0);
-  const [routeLoading, setRouteLoading] = useState(false);
-  const prevPathRef = useRef(pathname);
 
   useLayoutEffect(() => {
     if (!isProject) return undefined;
@@ -62,63 +60,43 @@ function AppContent({ onNavClick }) {
     };
   }, [isProject]);
 
-  useEffect(() => {
-    const prev = prevPathRef.current;
-    prevPathRef.current = pathname;
-
-    // Show loader when entering the contact page
-    if (pathname !== "/contact" || prev === "/contact") return undefined;
-
-    setRouteLoading(true);
-    const timer = window.setTimeout(() => setRouteLoading(false), MIN_LOADER_MS);
-    return () => window.clearTimeout(timer);
-  }, [pathname]);
-
   return (
     <>
-      <AnimatePresence>
-        {routeLoading ? <LoadingScreen key="contact-loader" /> : null}
-      </AnimatePresence>
+      <MouseLight />
 
-      {!routeLoading ? (
-        <>
-          <MouseLight />
-
-          {showHome && (
-            <div
-              className={isProject ? "pointer-events-none select-none" : undefined}
-              aria-hidden={isProject}
-            >
-              <Home onNavClick={onNavClick} />
-              {!isProject && (
-                <Footer onNavClick={onNavClick} className="overflow-hidden" />
-              )}
-            </div>
+      {showHome && (
+        <div
+          className={isProject ? "pointer-events-none select-none" : undefined}
+          aria-hidden={isProject}
+        >
+          <Home onNavClick={onNavClick} />
+          {!isProject && (
+            <Footer onNavClick={onNavClick} className="overflow-hidden" />
           )}
+        </div>
+      )}
 
-          <Routes>
-            <Route path="/" element={null} />
-            <Route
-              path="/project/:slug"
-              element={
-                <div className="fixed inset-0 z-50 overflow-y-auto overscroll-y-contain bg-black">
-                  <Suspense fallback={null}>
-                    <ProjectPage />
-                  </Suspense>
-                </div>
-              }
-            />
-            <Route
-              path="/contact"
-              element={
-                <Suspense fallback={null}>
-                  <ContactPage />
-                </Suspense>
-              }
-            />
-          </Routes>
-        </>
-      ) : null}
+      <Routes>
+        <Route path="/" element={null} />
+        <Route
+          path="/project/:slug"
+          element={
+            <div className="fixed inset-0 z-50 overflow-y-auto overscroll-y-contain bg-black">
+              <Suspense fallback={null}>
+                <ProjectPage />
+              </Suspense>
+            </div>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <Suspense fallback={null}>
+              <ContactPage />
+            </Suspense>
+          }
+        />
+      </Routes>
     </>
   );
 }

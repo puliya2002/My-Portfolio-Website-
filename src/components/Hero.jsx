@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import dpImage from "../assets/me.webp";
@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 import { SlSocialInstagram } from "react-icons/sl";
 import { FiArrowDownRight, FiArrowUpRight } from "react-icons/fi";
-import { Loader2, Star } from "lucide-react";
+import { Star } from "lucide-react";
 
 const springAnimation = {
   initial: { scale: 0.92, y: 18, opacity: 0 },
@@ -77,7 +77,6 @@ function BorderBeam({ delay = 0, duration = 14, size }) {
 
 const Hero = () => {
   const navigate = useNavigate();
-  const [contactLoading, setContactLoading] = useState(false);
 
   const handleDownload = () => {
     const link = document.createElement("a");
@@ -89,9 +88,7 @@ const Hero = () => {
   };
 
   const handleContactClick = () => {
-    if (contactLoading) return;
-    setContactLoading(true);
-    window.setTimeout(() => navigate("/contact"), 450);
+    navigate("/contact");
   };
 
   return (
@@ -242,11 +239,10 @@ const Hero = () => {
           {/* CTA - Contact */}
           <motion.div
             className="h-40 md:h-auto hero-card click cursor-pointer p-5 group"
-            whileHover={contactLoading ? undefined : { scale: 0.97 }}
-            whileTap={contactLoading ? undefined : { scale: 0.94 }}
+            whileHover={{ scale: 0.97 }}
+            whileTap={{ scale: 0.94 }}
             variants={springAnimation}
             onClick={handleContactClick}
-            aria-busy={contactLoading}
           >
             <div className="flex justify-between items-center w-full">
               <div>
@@ -258,24 +254,17 @@ const Hero = () => {
                 </p>
               </div>
               <div className="ml-3 p-2 border border-blue-500/40 rounded-full bg-blue-500/20 group-hover:bg-blue-500/35 group-hover:border-blue-400/60 transition-colors">
-                {contactLoading ? (
-                  <Loader2
-                    className="h-5 w-5 sm:max-md:h-4 sm:max-md:w-4 md:h-5 md:w-5 text-blue-300 animate-spin"
-                    aria-hidden
-                  />
-                ) : (
-                  <motion.span
-                    className="block"
-                    animate={{ x: [0, 3, 0], y: [0, -3, 0] }}
-                    transition={{
-                      duration: 1.4,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  >
-                    <FiArrowUpRight className="h-5 w-5 sm:max-md:h-4 sm:max-md:w-4 md:h-5 md:w-5 text-blue-400 group-hover:text-blue-300 transition-colors" />
-                  </motion.span>
-                )}
+                <motion.span
+                  className="block"
+                  animate={{ x: [0, 3, 0], y: [0, -3, 0] }}
+                  transition={{
+                    duration: 1.4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <FiArrowUpRight className="h-5 w-5 sm:max-md:h-4 sm:max-md:w-4 md:h-5 md:w-5 text-blue-400 group-hover:text-blue-300 transition-colors" />
+                </motion.span>
               </div>
             </div>
           </motion.div>
