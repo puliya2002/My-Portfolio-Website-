@@ -1,7 +1,6 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { FiArrowUpRight } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
@@ -50,7 +49,7 @@ function computeVisibleSkillCount(widths, containerWidth) {
   return 1;
 }
 
-function ProjectCard({ slug, name, image, skills }) {
+function ProjectCard({ slug, name, headline, image, skills }) {
   const navigate = useNavigate();
   const rowRef = useRef(null);
   const measureRef = useRef(null);
@@ -82,29 +81,27 @@ function ProjectCard({ slug, name, image, skills }) {
   const showPlus = hiddenCount > 0;
 
   return (
-    <motion.div
-      className="project-card group cursor-pointer relative overflow-hidden min-w-0"
+    <div
+      className="project-card group cursor-pointer relative overflow-hidden min-w-0 lg:h-full"
       onClick={() => {
         sessionStorage.setItem("portfolio:homeScrollY", String(window.scrollY));
         navigate(`/project/${slug}`);
       }}
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.25, ease: "easeOut" }}
     >
       {/* Card header */}
       <div className="flex justify-between items-start w-full mb-3">
-        <p className="text-xl font-semibold text-white group-hover:text-blue-300 transition-colors duration-200">
-          {name}
+        <p className="text-lg font-semibold text-white group-hover:text-blue-300 transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
+          {headline || name}
         </p>
         <div
           className="flex-shrink-0 ml-3 p-2 border border-gray-600/50 rounded-full bg-white/5
                         group-hover:bg-blue-500/20 group-hover:border-blue-500/40
-                        transition-all duration-200"
+                        transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
         >
           <FiArrowUpRight
             className="h-4 w-4 text-gray-400 group-hover:text-blue-300
                                     group-hover:translate-x-0.5 group-hover:-translate-y-0.5
-                                    transition-transform duration-200"
+                                    transition duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
           />
         </div>
       </div>
@@ -143,21 +140,22 @@ function ProjectCard({ slug, name, image, skills }) {
       </div>
 
       {/* Project image - intersection lazy load + blur placeholder */}
-      <div className="relative w-full overflow-hidden rounded-xl">
+      <div className="project-card__frame relative w-full overflow-hidden rounded-xl lg:flex lg:min-h-0 lg:flex-1 lg:flex-col">
         <LazyLoadImage
           src={image}
           alt={name}
           effect="blur"
           threshold={180}
           decoding="async"
-          wrapperClassName="block w-full !overflow-hidden rounded-xl"
-          className="block w-full h-auto object-contain object-center
-                     group-hover:scale-[1.03] transition-transform duration-500 ease-out"
+          wrapperClassName="block w-full !overflow-hidden rounded-xl lg:h-full lg:flex-1"
+          className="project-card__image block w-full h-auto object-contain object-center
+                     lg:h-full lg:object-cover
+                     group-hover:scale-[1.015]"
         />
         {/* Overlay on hover */}
         <div
           className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent
-                        opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl
+                        opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] rounded-xl
                         flex items-end justify-end p-3"
         >
           <span className="text-xs text-gray-300 font-medium tracking-wide">
@@ -165,7 +163,7 @@ function ProjectCard({ slug, name, image, skills }) {
           </span>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

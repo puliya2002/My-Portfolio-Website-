@@ -39,11 +39,14 @@ import LadyBudzNew from "../assets/new_mockups/ladybudz.webp";
 import SeenNew from "../assets/new_mockups/seen.webp";
 import SeenTn from "../assets/new_mockups/seentn.webp";
 import App from "../assets/new_mockups/app.webp";
+import Provix from "../assets/new_mockups/provix.webp";
+import Velin from "../assets/new_mockups/velin.webp";
 
 export const ProjectList = [
   {
     slug: "storeandsnore-platform",
     title: "Store & Snore Booking",
+    headline: "Luggage Storage Booking Platform",
     image: StoreAndSnore,
     skills: [
       "Next.js",
@@ -67,6 +70,7 @@ export const ProjectList = [
   {
     slug: "planitperfectevent",
     title: "Plan It Perfect Marketplace",
+    headline: "Multivendor Event Marketplace",
     image: PlanItPerfect,
     skills: [
       "Next.js",
@@ -92,6 +96,7 @@ export const ProjectList = [
   {
     slug: "sovereign-trust",
     title: "Sovereign Trust",
+    headline: "Trust Services Business Website",
     image: SovereignTrust,
     skills: [
       "WordPress",
@@ -111,8 +116,33 @@ export const ProjectList = [
       "Project for a client based in the USA who runs a trust-based business. Wordpress-based project. Logo and all branding designed by me.",
   },
   {
+    slug: "provix-digital",
+    title: "Provix Digital",
+    headline: "Automation Agency Website",
+    image: Provix,
+    skills: ["Next.js", "React", "Tailwind CSS", "Vercel", "UI/UX", "SEO"],
+    ss: "",
+    giturl: "",
+    weburl: "https://www.provixdigital.com/",
+    description:
+      "Provix Digital is the site for an international development and automation agency based in Colombo that serves clients across the USA, UK, and worldwide. I built it as a Next.js and React marketing platform with Tailwind CSS and shipped it on Vercel, aimed at turning visitors into strategy calls rather than just listing services. The homepage opens on a clear offer — automation, web, and mobile — then breaks the work into four practices: AI and intelligent automation (custom AI and LLM development, autonomous workflows, and chatbots with support triage), custom business systems (CRM, ERP, multi-tenant SaaS, and cloud architecture), website development (Next.js and React engineering, conversion-focused UI/UX, and technical SEO with Core Web Vitals), and mobile apps (Flutter, React Native, and native iOS and Android through App Store and Google Play launch). Further down, the page explains how the team works in three steps — discover, design, and deliver — with weekly releases, QA, and support after launch, alongside a client-story section and a strip of organizations the agency has shipped for, including NHS, 9 News, SEEN, Store & Snore, and Lady Luck. The positioning line, “Turning ideas into AI-powered digital experiences that scale,” runs through the page, and the title and metadata are written so the agency can be found for the services it actually sells.",
+  },
+  {
+    slug: "velin",
+    title: "Velin",
+    headline: "Scrolling Animation Website",
+    image: Velin,
+    skills: ["Next.js", "React", "Tailwind CSS", "Vercel", "UI/UX"],
+    ss: "",
+    giturl: "",
+    weburl: "https://velin-theta.vercel.app/",
+    description:
+      "Velin is a test project I built to practice a long, scroll-driven product page. It presents Velin One, a brass fountain pen that captures handwriting on dotted paper, as one continuous story instead of a stack of static sections. The site is built with Next.js and React, styled with Tailwind CSS, and deployed on Vercel. The page opens on a full-bleed hero, “Brass ink that stays,” then moves through the pen, who writes with it, the dotted paper, and what arrives in the case. A fixed navigation stays on screen, type scrambles into place, and product photography — the nib, the notebook, the charge puck, and five finishes — takes over the viewport as you scroll. The reserve call-to-action stays in the header so the motion never hides the offer. The exercise was pacing a narrative with scroll, keeping the type quiet, and making a marketing page feel physical.",
+  },
+  {
     slug: "portfoliolink",
     title: "PortfolioLink Platform",
+    headline: "Portfolio Builder SaaS Platform",
     image: PortfolioLink,
     skills: [
       "Next.js",
@@ -135,6 +165,7 @@ export const ProjectList = [
   {
     slug: "store-and-snore",
     title: "Store and Snore Nashville",
+    headline: "Luggage Storage Booking Website",
     image: StoreAndSnoreNashville,
     skills: ["WordPress", "Woocommerce", "Elementor", "Paypal", "Stripe"],
     ss: StoreSS,
@@ -146,6 +177,7 @@ export const ProjectList = [
   {
     slug: "SEEN-TN",
     title: "SEEN TN",
+    headline: "Non-Profit Student Ministry Website",
     image: SeenTn,
     skills: ["WordPress", "Woocommerce", "Elementor", "JavaScript", "CSS"],
     ss: SeenSS,
@@ -157,6 +189,7 @@ export const ProjectList = [
   {
     slug: "lady-budz-chicago",
     title: "Lady Budz Chicago",
+    headline: "Lifestyle Brand E-commerce Store",
     image: LadyBudzNew,
     skills: ["WordPress", "Woocommerce", "Elementor", "JavaScript", "CSS"],
     ss: LadybudzSs,
@@ -168,6 +201,7 @@ export const ProjectList = [
   {
     slug: "seen-org",
     title: "SEEN Org",
+    headline: "Non-Profit Donation Website",
     image: SeenNew,
     skills: ["WordPress", "Woocommerce", "CSS", "Paypal", "Figma"],
     ss: SeenSS,
@@ -179,6 +213,7 @@ export const ProjectList = [
   {
     slug: "money-track",
     title: "Money Tack",
+    headline: "Expense Tracking Mobile App",
     image: App,
     skills: ["Flutter", "Firebase", "UI/UX", "Git"],
     ss: Appss,
@@ -188,19 +223,21 @@ export const ProjectList = [
       "As part of a second-year university group project, We developed MoneyTrack, an expense tracking application using the Flutter framework and integrated with a Firebase database. The goal of MoneyTrack is to provide a user-friendly platform for recording and monitoring expenses efficiently. This project showcases my skills in teamwork, mobile app development, database integration, and creating intuitive user interfaces.",
   },
   {
-    slug: "lady-luck",
-    title: "Lady Luck",
-    image: Lady,
-    skills: ["WordPress", "Woocommerce", "CSS", "Paypal"],
-    ss: LadySS,
+    slug: "shilohs-temple",
+    title: "Shilohs Temple",
+    headline: "Children's Ministry Website",
+    image: Shilohstempl,
+    skills: ["WordPress", "Woocommerce", "Elementor", "JavaScript", "CSS"],
+    ss: ShilohstemplSS,
     giturl: "",
-    weburl: "https://ladyluckaz.com/",
+    weburl: "https://shilohstemple.com/",
     description:
-      "Project for a client in the USA who specializes in selling cannabis pre-rolls. For this project, I adopted a distinctive dark theme to evoke a luxurious casino ambiance. The website was built on WordPress, with all branding elements, including the logo, meticulously designed by me",
+      "Designed and developed a website for Shiloh’s Temple, an after-school ministry for children aged 5 to 10, centered on biblical teachings and the core themes of King, Kingdom, and Keys. The platform effectively communicates the ministry’s mission to nurture young hearts to know Jesus, live as Kingdom citizens, and walk in spiritual authority. With a clean, faith-inspired design and clear content structure, the website provides information about programs, values, and community involvement, helping families connect with the ministry's vision.",
   },
   {
     slug: "green-supermarket",
     title: "Green Supermarket",
+    headline: "Supermarket E-commerce Web App",
     image: GreenSupper,
     skills: ["HTML", "CSS", "JavaScript", "JAVA", "Git", "SQL"],
     ss: GreenSS,
@@ -211,20 +248,22 @@ export const ProjectList = [
   },
 
   {
-    slug: "shilohs-temple",
-    title: "Shilohs Temple",
-    image: Shilohstempl,
-    skills: ["WordPress", "Woocommerce", "Elementor", "JavaScript", "CSS"],
-    ss: ShilohstemplSS,
+    slug: "lady-luck",
+    title: "Lady Luck",
+    headline: "Casino-Themed E-commerce Store",
+    image: Lady,
+    skills: ["WordPress", "Woocommerce", "CSS", "Paypal"],
+    ss: LadySS,
     giturl: "",
-    weburl: "https://shilohstemple.com/",
+    weburl: "https://ladyluckaz.com/",
     description:
-      "Designed and developed a website for Shiloh’s Temple, an after-school ministry for children aged 5 to 10, centered on biblical teachings and the core themes of King, Kingdom, and Keys. The platform effectively communicates the ministry’s mission to nurture young hearts to know Jesus, live as Kingdom citizens, and walk in spiritual authority. With a clean, faith-inspired design and clear content structure, the website provides information about programs, values, and community involvement, helping families connect with the ministry's vision.",
+      "Project for a client in the USA who specializes in selling cannabis pre-rolls. For this project, I adopted a distinctive dark theme to evoke a luxurious casino ambiance. The website was built on WordPress, with all branding elements, including the logo, meticulously designed by me",
   },
 
   {
     slug: "natsisland",
     title: "Natsisland",
+    headline: "Restaurant Menu & Brand Website",
     image: Nuts,
     skills: ["WordPress", "Woocommerce", "Elementor", "JavaScript", "CSS"],
     ss: NutsSS,
@@ -237,6 +276,7 @@ export const ProjectList = [
   {
     slug: "music-city-luggage",
     title: "Music City Luggage Lounge",
+    headline: "Luggage Storage Booking System",
     image: MusicCity,
     skills: ["WordPress", "Woocommerce", "CSS", "Paypal"],
     ss: Musicss,
@@ -248,6 +288,7 @@ export const ProjectList = [
   {
     slug: "provisions-graphic",
     title: "ProVisions Graphic",
+    headline: "Design Subscription Platform",
     image: Provision,
     skills: ["Startup", "WordPress", "Woocommerce", "CSS", "PHP", "Stripe"],
     ss: Provisionss,
@@ -259,6 +300,7 @@ export const ProjectList = [
   {
     slug: "south-alba-sports",
     title: "South Alba Sports",
+    headline: "Running Event Registration Website",
     image: SouthAlba,
     skills: ["WordPress", "Woocommerce", "CSS", "Paypal"],
     ss: SouthAlbaSS,
@@ -271,6 +313,7 @@ export const ProjectList = [
   {
     slug: "riverside-academy",
     title: "Riverside Accademy",
+    headline: "Online Course Sales Website",
     image: Riverside,
     skills: ["WordPress", "Woocommerce", "CSS"],
     ss: RiversideSS,

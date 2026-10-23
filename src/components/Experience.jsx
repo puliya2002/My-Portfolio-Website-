@@ -1,11 +1,47 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const experiencePoints = [
-  "Level 2 Seller on Fiverr with 100% response rate and on-time delivery for over 500 projects.",
-  "Achieved a 96% five-star rating from 370+ reviews, collaborating with 300+ international clients.",
-  "Delivered 15+ WordPress websites and 10+ e-commerce solutions with seamless payment integration.",
-  "Spearheaded the development of user-friendly interfaces for 15+ WordPress websites, ensuring all designs adhered to responsive and SEO best practices that enhanced overall site traffic by increasing organic visits.",
+const roles = [
+  {
+    title: "Full-Stack Developer & UI/UX Designer | Top Rated Freelancer",
+    dates: "2023 – Present",
+    location: "Remote",
+    current: true,
+    description:
+      "Build and deliver full-stack web applications, SaaS platforms, marketplaces, dashboards, and e-commerce solutions for international clients. Recent work includes booking systems, multivendor marketplaces, and admin tools, with payments, authentication, and SQL-backed data models designed to scale.",
+    skills: [
+      "Next.js",
+      "React.js",
+      "TypeScript",
+      "Node.js",
+      "Supabase",
+      "Stripe",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    title: "WordPress Developer & UI/UX Designer | Fiverr",
+    dates: "2021 – 2023",
+    location: "Remote",
+    description:
+      "Designed and developed responsive WordPress websites, landing pages, business websites, and WooCommerce stores, transforming UI/UX designs into user-friendly, high-performing experiences. Custom themes, booking flows, and Stripe and PayPal checkout were part of the delivery for clients in the USA and UK.",
+    skills: [
+      "WordPress",
+      "Elementor",
+      "WooCommerce",
+      "PHP",
+      "JavaScript",
+      "Figma",
+      "SEO",
+    ],
+  },
+  {
+    title: "Graphic Designer & UI/UX Designer | Fiverr",
+    dates: "2018 – 2021",
+    description:
+      "Designed logos, brand identities, and marketing visuals for freelance clients, then carried those brands into simple websites and landing pages.",
+    skills: ["WordPress", "Communication", "Figma", "UI/UX", "Branding"],
+  },
 ];
 
 function Experience() {
@@ -32,24 +68,39 @@ function Experience() {
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <p className="text-sm text-blue-300 font-semibold tracking-wide mb-2">
-          2018 - Present
-        </p>
-        <h3 className="text-xl sm:text-2xl font-semibold text-white mb-5">
-          Freelance Web Developer &amp; Graphic Designer | Fiverr
-        </h3>
-
-        <ul className="space-y-3">
-          {experiencePoints.map((point) => (
-            <li
-              key={point}
-              className="text-gray-300 leading-relaxed flex items-start gap-3"
-            >
-              <span className="text-blue-400 mt-[2px]">•</span>
-              <span>{point}</span>
+        <ol className="space-y-8 border-l border-white/10 ml-2">
+          {roles.map((role) => (
+            <li key={role.title} className="relative pl-6">
+              <span className="absolute left-0 top-2 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-blue-400" />
+              <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+                <h3 className="text-lg sm:text-xl font-semibold text-white">
+                  {role.title}
+                </h3>
+                {role.current && (
+                  <span className="shrink-0 rounded-full bg-blue-500/15 px-2.5 py-0.5 text-xs font-medium text-blue-300">
+                    Present
+                  </span>
+                )}
+              </div>
+              <p className="mt-1 text-sm text-blue-300">{role.dates}</p>
+              {role.location && (
+                <p className="text-sm text-gray-400">{role.location}</p>
+              )}
+              {role.description && (
+                <p className="mt-3 text-gray-300 leading-relaxed">
+                  {role.description}
+                </p>
+              )}
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {role.skills.map((skill) => (
+                  <span key={skill} className="skill-tag skill-tag--compact">
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </li>
           ))}
-        </ul>
+        </ol>
       </motion.div>
     </div>
   );

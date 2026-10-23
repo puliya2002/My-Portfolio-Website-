@@ -26,12 +26,12 @@ function Projects() {
         <div className="section-divider" />
       </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="project-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {ProjectList.map((item, index) => (
           <motion.div
             key={item.slug}
             data-project-slug={item.slug}
-            className="min-w-0 scroll-mt-24"
+            className="min-w-0 scroll-mt-24 lg:h-full"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.15 }}
@@ -41,6 +41,7 @@ function Projects() {
             <ProjectCard
               slug={item.slug}
               name={item.title}
+              headline={item.headline}
               image={item.image}
               skills={item.skills}
             />

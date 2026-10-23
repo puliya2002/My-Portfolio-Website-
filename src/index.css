@@ -82,8 +82,7 @@ body {
 }
 
 .glass-card:hover::before,
-.hero-card:hover::before,
-.project-card:hover::before {
+.hero-card:hover::before {
   background: linear-gradient(
     140deg,
     rgba(255, 255, 255, 0.28) 0%,
@@ -209,10 +208,74 @@ body {
 .project-card {
   @apply justify-start items-start flex flex-col text-start p-4
          bg-white/[0.06] backdrop-blur-md rounded-2xl
-         shadow-[0_2px_16px_rgba(0,0,0,0.30)]
-         hover:bg-white/[0.09]
-         hover:shadow-[0_4px_24px_rgba(0,0,0,0.40)]
-         transition-all duration-300 ease-out;
+         shadow-[0_2px_16px_rgba(0,0,0,0.30)];
+  --card-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    transform 500ms var(--card-ease),
+    background-color 500ms var(--card-ease),
+    box-shadow 500ms var(--card-ease);
+  will-change: transform;
+}
+
+.project-card:hover {
+  @apply bg-white/[0.09] shadow-[0_12px_32px_rgba(0,0,0,0.45)];
+  transform: translateY(-4px);
+}
+
+/* Hover border fades in over the base gradient (gradients can't be transitioned) */
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    140deg,
+    rgba(255, 255, 255, 0.28) 0%,
+    rgba(191, 219, 254, 0.22) 35%,
+    rgba(96, 165, 250, 0.24) 70%,
+    rgba(34, 211, 238, 0.14) 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 500ms var(--card-ease);
+}
+
+.project-card:hover::after {
+  opacity: 1;
+}
+
+/* The lazy-load wrapper is inline-block, which leaves a baseline gap under the image */
+.project-card .lazy-load-image-background {
+  display: block !important;
+}
+
+.project-card .project-card__frame {
+  line-height: 0;
+}
+
+/* 3-column desktop rows: shorter cards fill the row so images meet with only the grid gap */
+@media (min-width: 1024px) {
+  .project-card .lazy-load-image-background {
+    height: 100% !important;
+  }
+
+  .project-card .project-card__image {
+    height: 100% !important;
+    object-fit: cover;
+  }
+}
+
+/* Overrides the lazy-load blur stylesheet, which replaces the img transition */
+.project-card .lazy-load-image-background.lazy-load-image-loaded > img.project-card__image {
+  transition:
+    opacity 300ms ease,
+    transform 700ms var(--card-ease);
+  will-change: transform;
 }
 
 /* ── CTA accent card ── */
